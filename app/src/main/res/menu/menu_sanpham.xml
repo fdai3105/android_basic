@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/ic_cart"
+        android:title="Giỏ hàng"
+        app:actionLayout="@layout/custom_cart_button"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/btnThemSPClick"
+        android:icon="@drawable/ic_add"
+        android:title="Thêm hàng"
+        app:showAsAction="always" />
+
+    <item
+        android:icon="@drawable/ic_sort"
+        android:title="Sắp xếp"
+        app:showAsAction="always">
+        <menu>
+            <item android:title="A - Z"
+                android:id="@+id/action_SortByName"/>
+
+            <item android:title="Giá Tiền: Tăng Dần"
+                android:id="@+id/action_SortByPrice_toHigh"/>
+
+            <item android:title="Giá Tiền: Giảm Dần"
+                android:id="@+id/action_SortByPrice_toLow"/>
+            <item android:title="Mới nhất"
+                android:id="@+id/action_SortByNew"/>
+        </menu>
+    </item>
+</menu>

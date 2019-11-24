@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/textGray"
+    android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textWhite"
+        android:drawableLeft="@drawable/ic_add_gray"
+        android:onClick="btDialogCustomAdd"
+        android:paddingStart="10dp"
+        android:text="  Thêm Sản Phẩm"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/textGray"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnbtDialogCustomEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textWhite"
+        android:drawableLeft="@drawable/ic_edit"
+        android:onClick="btDialogCustomEditClick"
+        android:paddingStart="10dp"
+        android:text="  Sửa Sản Phẩm"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/textGray"
+        android:textSize="18sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/textWhite"
+        android:drawableLeft="@drawable/ic_delete"
+        android:onClick="btDialogCustomDel"
+        android:paddingStart="10dp"
+        android:text="   Xoá Sản Phẩm"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/textGray"
+        android:textSize="18sp" />
+</LinearLayout>
