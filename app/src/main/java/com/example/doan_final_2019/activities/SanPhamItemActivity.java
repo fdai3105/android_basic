@@ -3,6 +3,7 @@ package com.example.doan_final_2019.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -43,18 +44,24 @@ public class SanPhamItemActivity extends AppCompatActivity {
         }
 //        getMonth start 0>11
         String ngayThem = SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getDate() +
-                "-" + (SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getMonth()+1) +
+                "-" + (SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getMonth() + 1) +
                 "-" + year + " " + SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getHours() + ":"
                 + SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getMinutes();
 
-        tvIDItem.setText("ID: " + SanPhamActivity.sanPhams.get(positionItem).getId_sp());
-        tvTenItem.setText(SanPhamActivity.sanPhams.get(positionItem).getTen_sp());
-        tvDanhMucItem.setText("Danh Mục: " + SanPhamActivity.sanPhams.get(positionItem).getDanhmuc_sp());
-        tvSoLuongItem.setText("Trong Kho: " + SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp());
-        tvGiaItem.setText(currencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp())) + " VND");
         new DownloadImage(ivAnhItem).execute(SanPhamActivity.sanPhams.get(positionItem).getAnh_sp());
+        tvIDItem.setText("ID: " + SanPhamActivity.sanPhams.get(positionItem).getId_sp());
+        tvTenItem.setText("Tên Sản Phẩm: " + SanPhamActivity.sanPhams.get(positionItem).getTen_sp());
+        tvDanhMucItem.setText("Danh Mục: " + SanPhamActivity.sanPhams.get(positionItem).getDanhmuc_sp());
+        tvGiaItem.setText(currencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp())) + " VND");
         rbItem.setRating(SanPhamActivity.sanPhams.get(positionItem).getLuongnguoidung_sp());
-        tvNgayThemItem.setText(ngayThem);
+        if (SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp() == 0) {
+            tvSoLuongItem.setTextColor(Color.RED);
+            tvSoLuongItem.setText("Hết hàng");
+        } else {
+            tvSoLuongItem.setText("Trong Kho: " + SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp());
+
+        }
+        tvNgayThemItem.setText("Ngày thêm: " + ngayThem);
 
     }
 

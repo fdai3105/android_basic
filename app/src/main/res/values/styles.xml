@@ -11,10 +11,10 @@
         <item name="android:statusBarColor">@color/first</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="actionBarStyle">@style/CustomActionBar</item>
-        <item name="android:windowBackground">@color/background</item>
+        <item name="android:windowBackground">@color/bgWhite</item>
         <item name="android:textColor">@color/textGray</item>
         <!--        item menu background(sort action bar)-->
-        <item name="android:itemBackground">@color/background</item>
+        <item name="android:itemBackground">@color/bgWhite</item>
     </style>
 
     <!--    Category MainActivity theme-->

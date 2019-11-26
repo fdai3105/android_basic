@@ -15,8 +15,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:gravity="center"
+            android:background="@drawable/bg_dialog_header"
             android:orientation="horizontal">
 
             <TextView
@@ -24,6 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="140dp"
                 android:text="Thêm Hàng"
+                android:textColor="@color/bgWhite"
                 android:textSize="28sp" />
 
             <Button
@@ -32,9 +35,8 @@
                 android:layout_height="35dp"
                 android:background="@drawable/bg_button_circle"
                 android:text="X"
-                android:textColor="#fff" />
+                android:textColor="@color/bgWhite" />
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,54 +47,81 @@
             android:orientation="vertical">
 
             <EditText
+                android:layout_marginTop="10dp"
                 android:id="@+id/etDialogTenSP"
-                android:textColor="@color/textWhite"
-                android:textSize="21sp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
                 android:hint="Tên sản phẩm:"
-                android:textColorHint="@color/textHint" />
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/textHint"
+                android:textSize="21sp" />
+
+            <Spinner
+                android:id="@+id/spDialogDMSP"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="-5dp"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:spinnerMode="dropdown"
+                android:textSize="21sp" />
 
             <EditText
                 android:id="@+id/etDialogSoLuong"
-                android:textColor="@color/textWhite"
-                android:textSize="21sp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
                 android:hint="Số lượng:"
                 android:inputType="number"
-                android:textColorHint="@color/textHint" />
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/textHint"
+                android:textSize="21sp" />
 
-            <EditText
-                android:id="@+id/etDialogGiaSP"
-                android:textColor="@color/textWhite"
-                android:textSize="21sp"
-                android:layout_marginBottom="5dp"
+            <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:hint="Giá: "
-                android:inputType="numberDecimal"
-                android:textColorHint="@color/textHint" />
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/etDialogGiaSP"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="5dp"
+                    android:hint="Giá: "
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/textGray"
+                    android:textColorHint="@color/textHint"
+                    android:textSize="21sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/etDialogGiaSP"
+                    android:layout_alignBottom="@+id/etDialogGiaSP"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="10dp"
+                    android:text="VNĐ"
+                    android:textColor="@color/textHint"
+                    android:textSize="20dp" />
+            </RelativeLayout>
 
             <EditText
                 android:id="@+id/etDialogMoTaSP"
-                android:textColor="@color/textWhite"
-                android:textSize="21sp"
-                android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
                 android:hint="Mô tả: "
-                android:textColorHint="@color/textHint" />
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/textHint"
+                android:textSize="21sp" />
+
             <Button
                 android:id="@+id/btnDialogAddClick"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:text="Thêm"
+                android:layout_gravity="center|bottom"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/bg_button_category"
-                android:layout_gravity="center|bottom"/>
+                android:text="Thêm" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

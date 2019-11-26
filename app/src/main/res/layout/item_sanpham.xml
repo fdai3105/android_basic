@@ -38,11 +38,11 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tv_soluongSP"
+                android:id="@+id/tv_danhmucSP"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:text="Số lượng"
+                android:text="Danh Mục"
                 android:textColor="@color/textP"
                 android:textSize="20dp" />
 

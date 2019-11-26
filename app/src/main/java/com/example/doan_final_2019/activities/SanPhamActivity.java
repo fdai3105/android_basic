@@ -6,6 +6,7 @@ import androidx.core.view.MenuItemCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -13,9 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.List;
 
 public class SanPhamActivity extends AppCompatActivity {
     GridView gridViewSP;
@@ -43,7 +47,6 @@ public class SanPhamActivity extends AppCompatActivity {
     public static int numberCart = 0;
     Dialog dialog;
     int positionLongClick;
-    FormatEditText formatEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,11 +110,13 @@ public class SanPhamActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_sanpham, menu);
         getSupportActionBar().setElevation(0);
 
-//        actionView == button Cart on actionBar
+        //Badge Cart on actionBar
         final MenuItem menuItem = menu.findItem(R.id.action_cart);
         View actionView = MenuItemCompat.getActionView(menuItem);
         tvCart = actionView.findViewById(R.id.notification_badge);
         tvCart.setText(numberCart + "");
+
+        //Badge Cart onClick
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,7 +127,6 @@ public class SanPhamActivity extends AppCompatActivity {
         return true;
     }
 
-    //#region action bar
     //R.id.home == back button on action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -161,7 +165,6 @@ public class SanPhamActivity extends AppCompatActivity {
         }
         return true;
     }
-    //#endregion
 
     public void btDialogCustomEditClick(View view) {
         suaHang();
@@ -241,20 +244,32 @@ public class SanPhamActivity extends AppCompatActivity {
 //    -         -----------------------------------------------------------        -
 //    ------------------------------------------------------------------------------
 
-
+    //Dialog when click button ThemHang
     private void themHang() {
         final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLogThemHang);
         dialog.setContentView(R.layout.dialog_sanpham_themhang);
         dialog.show();
-
+        /*--------------------------------------------------------------------------------------*/
         Button btnDialogClose = dialog.findViewById(R.id.btnDialogClose);
         Button btnAddDialogClick = dialog.findViewById(R.id.btnDialogAddClick);
 
         final EditText etDialogTenSP = dialog.findViewById(R.id.etDialogTenSP);
         final EditText etDialogSoLuong = dialog.findViewById(R.id.etDialogSoLuong);
+        final Spinner spDialogDMSP = dialog.findViewById(R.id.spDialogDMSP);
         final EditText etDialogGiaSP = dialog.findViewById(R.id.etDialogGiaSP);
         final EditText etDialogMoTaSP = dialog.findViewById(R.id.etDialogMoTaSP);
 
+        // add string to spinner
+        List<String> danhMucList = new ArrayList<>();
+        for (int i = 0; i < sanPhams.size() - 1; i++) {
+            if (!sanPhams.get(i).getDanhmuc_sp().equalsIgnoreCase(sanPhams.get(i + 1).getDanhmuc_sp())) {
+                danhMucList.add(sanPhams.get(i).getDanhmuc_sp());
+            }
+        }
+        ArrayAdapter<String> danhmucSpinner = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, danhMucList);
+        spDialogDMSP.setAdapter(danhmucSpinner);
+
+        //format decimal money
         etDialogGiaSP.addTextChangedListener(new FormatEditText(etDialogGiaSP));
 
         btnDialogClose.setOnClickListener(new View.OnClickListener() {
@@ -267,12 +282,13 @@ public class SanPhamActivity extends AppCompatActivity {
         btnAddDialogClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Date(year, month, day) => the year minus 1900.
+                //  Date(year, month, day) => the year minus 1900.
                 try {
                     Date currentTime = Calendar.getInstance().getTime();
-                    SanPham sanPham = new SanPham(1, etDialogTenSP.getText().toString(), null,
+                    SanPham sanPham = new SanPham(1, etDialogTenSP.getText().toString(),
+                            spDialogDMSP.getSelectedItem().toString(),
                             Integer.parseInt(etDialogSoLuong.getText().toString()),
-                            Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",","")),
+                            Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",", "")),
                             etDialogMoTaSP.getText().toString(),
                             null, 0, currentTime, false);
                     sanPhams.add(sanPham);
@@ -292,11 +308,29 @@ public class SanPhamActivity extends AppCompatActivity {
         dialog.show();
 
         final EditText etDialogEditTenSP = dialog.findViewById(R.id.etDialogEditTenSP);
+        Spinner spDialogEditDMSP = dialog.findViewById(R.id.spDialogEditDMSP);
         final EditText etDialogEditSoLuong = dialog.findViewById(R.id.etDialogEditSoLuong);
         final EditText etDialogEditGiaSP = dialog.findViewById(R.id.etDialogEditGiaSP);
         final EditText etDialogEditMoTaSP = dialog.findViewById(R.id.etDialogEditMoTaSP);
         Button btnDialogEditClick = dialog.findViewById(R.id.btnDialogEditClick);
         Button btnDialogClose = dialog.findViewById(R.id.btnDialogClose);
+
+        //  add string to spinner
+        List<String> danhMucList = new ArrayList<>();
+        for (int i = 0; i < sanPhams.size() - 1; i++) {
+            if (!sanPhams.get(i).getDanhmuc_sp().equalsIgnoreCase(sanPhams.get(i + 1).getDanhmuc_sp())) {
+                danhMucList.add(sanPhams.get(i).getDanhmuc_sp());
+            }
+        }
+        ArrayAdapter<String> danhmucSpinner = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, danhMucList);
+        spDialogEditDMSP.setAdapter(danhmucSpinner);
+
+        //  add default select to spinner
+        for (int i = 0; i < spDialogEditDMSP.getCount(); i++) {
+            if (spDialogEditDMSP.getItemAtPosition(i).equals(sanPhams.get(positionLongClick).getDanhmuc_sp())) {
+                spDialogEditDMSP.setSelection(i);
+            }
+        }
 
         etDialogEditGiaSP.addTextChangedListener(new FormatEditText(etDialogEditGiaSP));
 
@@ -334,7 +368,7 @@ public class SanPhamActivity extends AppCompatActivity {
     }
 
 
-//    ********************************************************
+    //    ********************************************************
     @Override
     public void onBackPressed() {
         super.onBackPressed();
