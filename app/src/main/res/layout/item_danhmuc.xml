@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/bg_white_radius"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_gravity="center"
+        android:id="@+id/iv_imageDM"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_empty_image" />
+
+    <TextView
+        android:id="@+id/tv_tenDM"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/textGrayyTrans70"
+        android:padding="1dp"
+        android:textAlignment="center"
+        android:textColor="@color/textWhite"
+        android:textSize="25dp"
+        tools:text="Test" />
+</FrameLayout>

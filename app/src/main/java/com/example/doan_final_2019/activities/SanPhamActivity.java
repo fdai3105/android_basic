@@ -6,7 +6,6 @@ import androidx.core.view.MenuItemCompat;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -26,6 +25,7 @@ import com.example.doan_final_2019.Data;
 import com.example.doan_final_2019.FormatEditText;
 import com.example.doan_final_2019.R;
 import com.example.doan_final_2019.adapters.SanPhamAdapter;
+import com.example.doan_final_2019.models.DanhMuc;
 import com.example.doan_final_2019.models.SanPham;
 
 import java.text.ParseException;
@@ -41,11 +41,14 @@ public class SanPhamActivity extends AppCompatActivity {
     GridView gridViewSP;
     public static TextView tvCart;
     EditText etSearch;
-    SanPhamAdapter sanPhamAdapter;
-    Data dataSP = new Data();
+    Dialog dialog;
+
+    private SanPhamAdapter sanPhamAdapter;
+    private Data dataSP = new Data();
+    private ArrayList<DanhMuc> dmMacDinh = new ArrayList<>();
+
     public static ArrayList<SanPham> sanPhams = new ArrayList<>();
     public static int numberCart = 0;
-    Dialog dialog;
     int positionLongClick;
 
     @Override
@@ -61,6 +64,9 @@ public class SanPhamActivity extends AppCompatActivity {
         if (sanPhams.isEmpty()) {
             dataSP.DataSanPham(sanPhams);
         }
+
+        //add danh muc mac dinh form Data Class
+        dataSP.DataDanhMuc(dmMacDinh);
 
         gridViewSP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -261,9 +267,16 @@ public class SanPhamActivity extends AppCompatActivity {
 
         // add string to spinner
         List<String> danhMucList = new ArrayList<>();
-        for (int i = 0; i < sanPhams.size() - 1; i++) {
-            if (!sanPhams.get(i).getDanhmuc_sp().equalsIgnoreCase(sanPhams.get(i + 1).getDanhmuc_sp())) {
-                danhMucList.add(sanPhams.get(i).getDanhmuc_sp());
+        for (SanPham sanPham : sanPhams) {
+            if (!danhMucList.contains(sanPham.getDanhmuc_sp())) {
+                danhMucList.add(sanPham.getDanhmuc_sp());
+            }
+        }
+        if (dmMacDinh.size() > 0) {
+            for (int i = 0; i < dmMacDinh.size() ; i++) {
+                if (!danhMucList.contains(dmMacDinh.get(i).getTenDanhMuc())) {
+                    danhMucList.add(dmMacDinh.get(i).getTenDanhMuc());
+                }
             }
         }
         ArrayAdapter<String> danhmucSpinner = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, danhMucList);
@@ -308,7 +321,7 @@ public class SanPhamActivity extends AppCompatActivity {
         dialog.show();
 
         final EditText etDialogEditTenSP = dialog.findViewById(R.id.etDialogEditTenSP);
-        Spinner spDialogEditDMSP = dialog.findViewById(R.id.spDialogEditDMSP);
+        final Spinner spDialogEditDMSP = dialog.findViewById(R.id.spDialogEditDMSP);
         final EditText etDialogEditSoLuong = dialog.findViewById(R.id.etDialogEditSoLuong);
         final EditText etDialogEditGiaSP = dialog.findViewById(R.id.etDialogEditGiaSP);
         final EditText etDialogEditMoTaSP = dialog.findViewById(R.id.etDialogEditMoTaSP);
@@ -317,11 +330,21 @@ public class SanPhamActivity extends AppCompatActivity {
 
         //  add string to spinner
         List<String> danhMucList = new ArrayList<>();
-        for (int i = 0; i < sanPhams.size() - 1; i++) {
-            if (!sanPhams.get(i).getDanhmuc_sp().equalsIgnoreCase(sanPhams.get(i + 1).getDanhmuc_sp())) {
-                danhMucList.add(sanPhams.get(i).getDanhmuc_sp());
+        for (SanPham sanPham : sanPhams) {
+            if (!danhMucList.contains(sanPham.getDanhmuc_sp())) {
+                danhMucList.add(sanPham.getDanhmuc_sp());
             }
         }
+
+        //danhMuc form Data class
+        if (dmMacDinh.size() > 0) {
+            for (int i = 0; i < dmMacDinh.size() ; i++) {
+                if (!danhMucList.contains(dmMacDinh.get(i).getTenDanhMuc())) {
+                    danhMucList.add(dmMacDinh.get(i).getTenDanhMuc());
+                }
+            }
+        }
+
         ArrayAdapter<String> danhmucSpinner = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, danhMucList);
         spDialogEditDMSP.setAdapter(danhmucSpinner);
 

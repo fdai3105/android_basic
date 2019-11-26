@@ -11,9 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".activities.DanhMucItemActivity"></activity>
         <activity
             android:name=".activities.GioHangActivity"
-            android:parentActivityName=".activities.SanPhamActivity"></activity>
+            android:parentActivityName=".activities.SanPhamActivity" />
         <activity
             android:name=".activities.SanPhamItemActivity"
             android:parentActivityName=".activities.SanPhamActivity" />
