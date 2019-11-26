@@ -45,7 +45,6 @@ public class SanPhamActivity extends AppCompatActivity {
 
     private SanPhamAdapter sanPhamAdapter;
     private Data dataSP = new Data();
-    private ArrayList<DanhMuc> dmMacDinh = new ArrayList<>();
 
     public static ArrayList<SanPham> sanPhams = new ArrayList<>();
     public static int numberCart = 0;
@@ -64,9 +63,6 @@ public class SanPhamActivity extends AppCompatActivity {
         if (sanPhams.isEmpty()) {
             dataSP.DataSanPham(sanPhams);
         }
-
-        //add danh muc mac dinh form Data Class
-        dataSP.DataDanhMuc(dmMacDinh);
 
         gridViewSP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -91,8 +87,8 @@ public class SanPhamActivity extends AppCompatActivity {
 
         sanPhamAdapter = new SanPhamAdapter(getApplicationContext(), sanPhams);
         gridViewSP.setAdapter(sanPhamAdapter);
-
         gridViewSP.setTextFilterEnabled(true);
+
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -140,22 +136,19 @@ public class SanPhamActivity extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 break;
-            case R.id.action_cart:
-                Toast.makeText(this, "32", Toast.LENGTH_SHORT).show();
-                break;
             case R.id.action_SortByName:
                 Collections.sort(sanPhams, new NameSort());
-                sanPhamAdapter.notifyDataSetChanged(); /*F5 làm mới cuộc đời*/
+                sanPhamAdapter.notifyDataSetChanged();
                 Toast.makeText(this, "Đã sắp xếp theo tên", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_SortByPrice_toLow:
                 Collections.sort(sanPhams, new PriceSortToLow());
-                sanPhamAdapter.notifyDataSetChanged(); /*F5 làm mới cuộc đời*/
+                sanPhamAdapter.notifyDataSetChanged();
                 Toast.makeText(this, "Đã sắp xếp theo giá tiền giảm dần", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_SortByPrice_toHigh:
                 Collections.sort(sanPhams, new PriceSortToHigh());
-                sanPhamAdapter.notifyDataSetChanged(); /*F5 làm mới cuộc đời*/
+                sanPhamAdapter.notifyDataSetChanged();
                 Toast.makeText(this, "Đã sắp xếp theo giá tiền tăng dần", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_SortByNew:
@@ -243,13 +236,6 @@ public class SanPhamActivity extends AppCompatActivity {
     }
 //#endregion
 
-    //    ------------------------------------------------------------------------------
-//    -                                                                            -
-//    -                                                                            -
-//    -                                                                            -
-//    -         -----------------------------------------------------------        -
-//    ------------------------------------------------------------------------------
-
     //Dialog when click button ThemHang
     private void themHang() {
         final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLogThemHang);
@@ -265,20 +251,9 @@ public class SanPhamActivity extends AppCompatActivity {
         final EditText etDialogGiaSP = dialog.findViewById(R.id.etDialogGiaSP);
         final EditText etDialogMoTaSP = dialog.findViewById(R.id.etDialogMoTaSP);
 
-        // add string to spinner
         List<String> danhMucList = new ArrayList<>();
-        for (SanPham sanPham : sanPhams) {
-            if (!danhMucList.contains(sanPham.getDanhmuc_sp())) {
-                danhMucList.add(sanPham.getDanhmuc_sp());
-            }
-        }
-        if (dmMacDinh.size() > 0) {
-            for (int i = 0; i < dmMacDinh.size() ; i++) {
-                if (!danhMucList.contains(dmMacDinh.get(i).getTenDanhMuc())) {
-                    danhMucList.add(dmMacDinh.get(i).getTenDanhMuc());
-                }
-            }
-        }
+        addDataSpinner(danhMucList);
+
         ArrayAdapter<String> danhmucSpinner = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, danhMucList);
         spDialogDMSP.setAdapter(danhmucSpinner);
 
@@ -299,7 +274,7 @@ public class SanPhamActivity extends AppCompatActivity {
                 try {
                     Date currentTime = Calendar.getInstance().getTime();
                     SanPham sanPham = new SanPham(1, etDialogTenSP.getText().toString(),
-                            spDialogDMSP.getSelectedItem().toString(),
+                            new DanhMuc("", spDialogDMSP.getSelectedItem().toString()),
                             Integer.parseInt(etDialogSoLuong.getText().toString()),
                             Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",", "")),
                             etDialogMoTaSP.getText().toString(),
@@ -328,29 +303,15 @@ public class SanPhamActivity extends AppCompatActivity {
         Button btnDialogEditClick = dialog.findViewById(R.id.btnDialogEditClick);
         Button btnDialogClose = dialog.findViewById(R.id.btnDialogClose);
 
-        //  add string to spinner
         List<String> danhMucList = new ArrayList<>();
-        for (SanPham sanPham : sanPhams) {
-            if (!danhMucList.contains(sanPham.getDanhmuc_sp())) {
-                danhMucList.add(sanPham.getDanhmuc_sp());
-            }
-        }
-
-        //danhMuc form Data class
-        if (dmMacDinh.size() > 0) {
-            for (int i = 0; i < dmMacDinh.size() ; i++) {
-                if (!danhMucList.contains(dmMacDinh.get(i).getTenDanhMuc())) {
-                    danhMucList.add(dmMacDinh.get(i).getTenDanhMuc());
-                }
-            }
-        }
+        addDataSpinner(danhMucList);
 
         ArrayAdapter<String> danhmucSpinner = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, danhMucList);
         spDialogEditDMSP.setAdapter(danhmucSpinner);
 
         //  add default select to spinner
         for (int i = 0; i < spDialogEditDMSP.getCount(); i++) {
-            if (spDialogEditDMSP.getItemAtPosition(i).equals(sanPhams.get(positionLongClick).getDanhmuc_sp())) {
+            if (spDialogEditDMSP.getItemAtPosition(i).equals(sanPhams.get(positionLongClick).getDanhMuc().getTenDanhMuc())) {
                 spDialogEditDMSP.setSelection(i);
             }
         }
@@ -374,10 +335,14 @@ public class SanPhamActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     sanPhams.set(positionLongClick, new SanPham(sanPhams.get(positionLongClick).getId_sp(),
-                            etDialogEditTenSP.getText().toString(), sanPhams.get(positionLongClick).getDanhmuc_sp(),
-                            Integer.parseInt(etDialogEditSoLuong.getText().toString()), Integer.parseInt(etDialogEditGiaSP.getText().toString().replaceAll(",", "")),
-                            etDialogEditMoTaSP.getText().toString(), sanPhams.get(positionLongClick).getAnh_sp(),
-                            sanPhams.get(positionLongClick).getLuongnguoidung_sp(), sanPhams.get(positionLongClick).getNgaythem_sp(),
+                            etDialogEditTenSP.getText().toString(),
+                            new DanhMuc(sanPhams.get(positionLongClick).getDanhMuc().getAnhDanhMuc(), spDialogEditDMSP.getSelectedItem().toString()),
+                            Integer.parseInt(etDialogEditSoLuong.getText().toString()),
+                            Integer.parseInt(etDialogEditGiaSP.getText().toString().replaceAll(",", "")),
+                            etDialogEditMoTaSP.getText().toString(),
+                            sanPhams.get(positionLongClick).getAnh_sp(),
+                            sanPhams.get(positionLongClick).getLuongnguoidung_sp(),
+                            sanPhams.get(positionLongClick).getNgaythem_sp(),
                             sanPhams.get(positionLongClick).getTrangThaiGioHang()));
                     sanPhamAdapter.notifyDataSetChanged();
                     Toast.makeText(SanPhamActivity.this, "Đã sửa thành công!", Toast.LENGTH_SHORT).show();
@@ -390,10 +355,21 @@ public class SanPhamActivity extends AppCompatActivity {
         });
     }
 
+    private void addDataSpinner(List<String> danhMucList) {
+        // add string to spinner
+        for (SanPham sanPham : sanPhams) {
+            if (!danhMucList.contains(sanPham.getDanhMuc().getTenDanhMuc())) {
+                danhMucList.add(sanPham.getDanhMuc().getTenDanhMuc());
+            }
+        }
 
-    //    ********************************************************
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+        //add danhMuc form DanhMucActivity
+        if (DanhMucActivity.danhMucs.size() > 0) {
+            for (int i = 0; i < DanhMucActivity.danhMucs.size(); i++) {
+                if (!danhMucList.contains(DanhMucActivity.danhMucs.get(i).getTenDanhMuc())) {
+                    danhMucList.add(DanhMucActivity.danhMucs.get(i).getTenDanhMuc());
+                }
+            }
+        }
     }
 }

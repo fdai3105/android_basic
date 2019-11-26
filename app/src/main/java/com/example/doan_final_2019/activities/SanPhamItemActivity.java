@@ -51,7 +51,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
         new DownloadImage(ivAnhItem).execute(SanPhamActivity.sanPhams.get(positionItem).getAnh_sp());
         tvIDItem.setText("ID: " + SanPhamActivity.sanPhams.get(positionItem).getId_sp());
         tvTenItem.setText("Tên Sản Phẩm: " + SanPhamActivity.sanPhams.get(positionItem).getTen_sp());
-        tvDanhMucItem.setText("Danh Mục: " + SanPhamActivity.sanPhams.get(positionItem).getDanhmuc_sp());
+        tvDanhMucItem.setText("Danh Mục: " + SanPhamActivity.sanPhams.get(positionItem).getDanhMuc().getTenDanhMuc());
         tvGiaItem.setText(currencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp())) + " VND");
         rbItem.setRating(SanPhamActivity.sanPhams.get(positionItem).getLuongnguoidung_sp());
         if (SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp() == 0) {

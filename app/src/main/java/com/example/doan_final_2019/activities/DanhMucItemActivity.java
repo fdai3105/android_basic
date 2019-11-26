@@ -27,7 +27,7 @@ public class DanhMucItemActivity extends AppCompatActivity {
 
         String tenDM = getIntent().getStringExtra("tenDM");
         for (int i = 0; i < sanPhamActivity.sanPhams.size() ; i++) {
-            if (sanPhamActivity.sanPhams.get(i).getDanhmuc_sp().equalsIgnoreCase(tenDM)) {
+            if (sanPhamActivity.sanPhams.get(i).getDanhMuc().getTenDanhMuc().equalsIgnoreCase(tenDM)) {
                 sanPhams.add(sanPhamActivity.sanPhams.get(i));
             }
         }

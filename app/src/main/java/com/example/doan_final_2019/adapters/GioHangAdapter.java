@@ -57,7 +57,7 @@ public class GioHangAdapter extends BaseAdapter {
         dataitem.tv_idGH.setText(sanPhams.get(position).getId_sp()+"");
         new DownloadImage(dataitem.iv_imageGH).execute(sanPhams.get(position).getAnh_sp());
         dataitem.tv_tenGH.setText(sanPhams.get(position).getTen_sp());
-        dataitem.tv_danhmucGH.setText(sanPhams.get(position).getDanhmuc_sp()+"");
+        dataitem.tv_danhmucGH.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc()+"");
         dataitem.tv_giatienGH.setText(sanPhams.get(position).getGia_sp()+"");
         return convertView;
     }

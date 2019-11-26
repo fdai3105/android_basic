@@ -9,7 +9,7 @@ import java.util.Date;
 public class SanPham {
     private int id_sp;
     private String ten_sp;
-    private String danhmuc_sp;
+    private DanhMuc danhMuc;
     private int soluong_sp;
     private int gia_sp;
     private String mota_sp;
@@ -18,19 +18,25 @@ public class SanPham {
     private Date ngaythem_sp;
     private Boolean trangThaiGioHang;
 
-    public SanPham(int id_sp, String ten_sp, String danhmuc_sp, int soluong_sp,
-                   int gia_sp, String mota_sp, String anh_sp, float luongnguoidung_sp,
-                   Date ngaythem_sp, Boolean trangThaiGioHang) {
+    public SanPham(int id_sp, String ten_sp, DanhMuc danhMuc, int soluong_sp, int gia_sp, String mota_sp, String anh_sp, float luongnguoidung_sp, Date ngaythem_sp, Boolean trangThaiGioHang) {
         this.id_sp = id_sp;
         this.ten_sp = ten_sp;
-        this.danhmuc_sp = danhmuc_sp;
+        this.danhMuc = danhMuc;
         this.soluong_sp = soluong_sp;
         this.gia_sp = gia_sp;
         this.mota_sp = mota_sp;
         this.anh_sp = anh_sp;
-        this.ngaythem_sp = ngaythem_sp;
         this.luongnguoidung_sp = luongnguoidung_sp;
+        this.ngaythem_sp = ngaythem_sp;
         this.trangThaiGioHang = trangThaiGioHang;
+    }
+
+    public DanhMuc getDanhMuc() {
+        return danhMuc;
+    }
+
+    public void setDanhMuc(DanhMuc danhMuc) {
+        this.danhMuc = danhMuc;
     }
 
     public Boolean getTrangThaiGioHang() {
@@ -73,14 +79,6 @@ public class SanPham {
         this.ten_sp = ten_sp;
     }
 
-    public String getDanhmuc_sp() {
-        return danhmuc_sp;
-    }
-
-    public void setDanhmuc_sp(String danhmuc_sp) {
-        this.danhmuc_sp = danhmuc_sp;
-    }
-
     public int getSoluong_sp() {
         return soluong_sp;
     }
@@ -118,7 +116,6 @@ public class SanPham {
         return
                 id_sp + "_" +
                         ten_sp + "-" +
-                        danhmuc_sp + "-" +
                         soluong_sp + "-" +
                         gia_sp + "-" +
                         mota_sp + "-" +

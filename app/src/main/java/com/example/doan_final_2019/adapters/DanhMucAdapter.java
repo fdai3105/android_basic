@@ -49,7 +49,7 @@ public class DanhMucAdapter extends BaseAdapter {
             dataitem.tv_tenDM = convertView.findViewById(R.id.tv_tenDM);
             convertView.setTag(dataitem);
         } else {
-         dataitem =(MyView) convertView.getTag();
+            dataitem = (MyView) convertView.getTag();
         }
         dataitem.tv_tenDM.setText(danhMucs.get(position).getTenDanhMuc());
         //new DownloadImage(dataitem.iv_imageDM).execute(danhMucs.get(position).getAnhDanhMuc());

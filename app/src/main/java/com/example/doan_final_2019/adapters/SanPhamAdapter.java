@@ -22,7 +22,6 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
     private ArrayList<SanPham> sanPhams;
 
     public ArrayList<SanPham> orig;
-//    String trangThaiHang;
 
     public SanPhamAdapter(Context context, ArrayList<SanPham> sanPhams) {
         this.context = context;
@@ -60,18 +59,9 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
         } else {
             dataitem = (MyView) convertView.getTag();
         }
-
-//        if (sanPhams.get(position).getSoluong_sp() >= 20) {
-//            trangThaiHang = "Còn Nhiều";
-//        } else if (sanPhams.get(position).getSoluong_sp() < 20 && sanPhams.get(position).getSoluong_sp() > 0) {
-//            trangThaiHang = "Gần hết";
-//        } else {
-//            trangThaiHang = "Hết hàng";
-//        }
-
         new DownloadImage(dataitem.iv_imageSP).execute(sanPhams.get(position).getAnh_sp());
         dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + "");
-        dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhmuc_sp()+"");
+        dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc()+"");
         dataitem.tv_giatienSP.setText(currencyFormat(String.valueOf(sanPhams.get(position).getGia_sp())) + " VND");
         return convertView;
     }
@@ -103,7 +93,7 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
                             if (s.getTen_sp().toLowerCase()
                                     .contains(constraint.toString()))
                                 results.add(s);
-                            if (s.getDanhmuc_sp().toLowerCase()
+                            if (s.getDanhMuc().getTenDanhMuc().toLowerCase()
                                     .contains(constraint.toString()))
                                 results.add(s);
                         }
