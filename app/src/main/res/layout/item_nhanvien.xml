@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center|top"
+    android:background="@drawable/bg_white_radius_nv">
+
+    <ImageView
+        android:id="@+id/iv_anhNV"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="fitXY"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_empty_image" />
+
+    <TextView
+        android:id="@+id/tv_tenNV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên nhân viên"
+        android:textColor="@color/textGray"
+        android:textSize="24sp"
+        android:layout_marginBottom="2dp"/>
+
+    <TextView
+        android:id="@+id/tv_chucviNV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chức vụ"
+        android:textColor="@color/textGrayy"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
+
+</LinearLayout>

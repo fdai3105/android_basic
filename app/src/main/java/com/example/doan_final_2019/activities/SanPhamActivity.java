@@ -238,7 +238,7 @@ public class SanPhamActivity extends AppCompatActivity {
 
     //Dialog when click button ThemHang
     private void themHang() {
-        final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLogThemHang);
+        final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLog);
         dialog.setContentView(R.layout.dialog_sanpham_themhang);
         dialog.show();
         /*--------------------------------------------------------------------------------------*/
@@ -270,28 +270,35 @@ public class SanPhamActivity extends AppCompatActivity {
         btnAddDialogClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //  Date(year, month, day) => the year minus 1900.
-                try {
-                    Date currentTime = Calendar.getInstance().getTime();
-                    SanPham sanPham = new SanPham(1, etDialogTenSP.getText().toString(),
-                            new DanhMuc("", spDialogDMSP.getSelectedItem().toString()),
-                            Integer.parseInt(etDialogSoLuong.getText().toString()),
-                            Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",", "")),
-                            etDialogMoTaSP.getText().toString(),
-                            null, 0, currentTime, false);
-                    sanPhams.add(sanPham);
-                    sanPhamAdapter.notifyDataSetChanged();
-                    Toast.makeText(SanPhamActivity.this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                } catch (Exception e) {
+                if (etDialogTenSP.getText().toString().trim().length() == 0
+                        || etDialogSoLuong.getText().toString().trim().length() == 0
+                        || etDialogGiaSP.getText().toString().trim().length() == 0) {
                     Toast.makeText(SanPhamActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                } else {
+                //  Date(year, month, day) => the year minus 1900.
+                    try {
+                        Date currentTime = Calendar.getInstance().getTime();
+                        SanPham sanPham = new SanPham(1, etDialogTenSP.getText().toString(),
+                                new DanhMuc("", spDialogDMSP.getSelectedItem().toString()),
+                                Integer.parseInt(etDialogSoLuong.getText().toString()),
+                                Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",", "")),
+                                etDialogMoTaSP.getText().toString(),
+                                null, 0, currentTime, false);
+                        sanPhams.add(sanPham);
+                        sanPhamAdapter.notifyDataSetChanged();
+                        Toast.makeText(SanPhamActivity.this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    } catch (Exception e) {
+                        Toast.makeText(SanPhamActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
     }
 
     private void suaHang() {
-        final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLogThemHang);
+        final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLog);
         dialog.setContentView(R.layout.dialog_sanpham_suahang);
         dialog.show();
 
@@ -333,22 +340,28 @@ public class SanPhamActivity extends AppCompatActivity {
         btnDialogEditClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    sanPhams.set(positionLongClick, new SanPham(sanPhams.get(positionLongClick).getId_sp(),
-                            etDialogEditTenSP.getText().toString(),
-                            new DanhMuc(sanPhams.get(positionLongClick).getDanhMuc().getAnhDanhMuc(), spDialogEditDMSP.getSelectedItem().toString()),
-                            Integer.parseInt(etDialogEditSoLuong.getText().toString()),
-                            Integer.parseInt(etDialogEditGiaSP.getText().toString().replaceAll(",", "")),
-                            etDialogEditMoTaSP.getText().toString(),
-                            sanPhams.get(positionLongClick).getAnh_sp(),
-                            sanPhams.get(positionLongClick).getLuongnguoidung_sp(),
-                            sanPhams.get(positionLongClick).getNgaythem_sp(),
-                            sanPhams.get(positionLongClick).getTrangThaiGioHang()));
-                    sanPhamAdapter.notifyDataSetChanged();
-                    Toast.makeText(SanPhamActivity.this, "Đã sửa thành công!", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                } catch (Exception e) {
-                    Toast.makeText(SanPhamActivity.this, "Vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
+                if (etDialogEditTenSP.getText().toString().trim().length() == 0
+                        || etDialogEditSoLuong.getText().toString().trim().length() == 0
+                        || etDialogEditGiaSP.getText().toString().trim().length() == 0) {
+                    Toast.makeText(SanPhamActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        sanPhams.set(positionLongClick, new SanPham(sanPhams.get(positionLongClick).getId_sp(),
+                                etDialogEditTenSP.getText().toString(),
+                                new DanhMuc(sanPhams.get(positionLongClick).getDanhMuc().getAnhDanhMuc(), spDialogEditDMSP.getSelectedItem().toString()),
+                                Integer.parseInt(etDialogEditSoLuong.getText().toString()),
+                                Integer.parseInt(etDialogEditGiaSP.getText().toString().replaceAll(",", "")),
+                                etDialogEditMoTaSP.getText().toString(),
+                                sanPhams.get(positionLongClick).getAnh_sp(),
+                                sanPhams.get(positionLongClick).getLuongnguoidung_sp(),
+                                sanPhams.get(positionLongClick).getNgaythem_sp(),
+                                sanPhams.get(positionLongClick).getTrangThaiGioHang()));
+                        sanPhamAdapter.notifyDataSetChanged();
+                        Toast.makeText(SanPhamActivity.this, "Đã sửa thành công!", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    } catch (Exception e) {
+                        Toast.makeText(SanPhamActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }

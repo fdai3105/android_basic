@@ -1,8 +1,10 @@
 package com.example.doan_final_2019.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.GridView;
 
 import com.example.doan_final_2019.R;
@@ -33,5 +35,13 @@ public class DanhMucItemActivity extends AppCompatActivity {
         }
         sanPhamAdapter = new SanPhamAdapter(getApplicationContext(),sanPhams);
         gvDanhMucItem.setAdapter(sanPhamAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home : onBackPressed();
+        }
+        return true;
     }
 }

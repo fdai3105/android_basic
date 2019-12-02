@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgWhitee"
+    android:orientation="vertical"
+    tools:context=".activities.NhanVienItemActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_item_nv" />
+
+    <ImageView
+        android:id="@+id/iv_itemAnhNV"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-90dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_loading" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/iv_itemTenNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên nhân viên"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/iv_itemChucVuNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vị trí/chức vụ"
+            android:textColor="@color/textGrayy"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/iv_itemDiaChiNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="Quê quán/địa chỉ"
+            android:textColor="@color/textGrayy"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/iv_itemSDTNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại"
+            android:textColor="@color/textGrayy"
+            android:textSize="20sp" />
+    </LinearLayout>
+</LinearLayout>

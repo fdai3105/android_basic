@@ -90,13 +90,21 @@ public class DanhMucActivity extends AppCompatActivity {
     }
 
     private void themDM() {
-        final Dialog dialog = new Dialog(DanhMucActivity.this, R.style.DiaLogThemHang);
+        final Dialog dialog = new Dialog(DanhMucActivity.this, R.style.DiaLog);
         dialog.setContentView(R.layout.dialog_danhmuc_themdm);
         dialog.show();
         //
         final EditText etDialogTenDM = dialog.findViewById(R.id.etDialogTenDM);
         final EditText etDialogAnhDM = dialog.findViewById(R.id.etDialogAnhDM);
         Button btnDialogDMAddClick = dialog.findViewById(R.id.btnDialogDMAddClick);
+        Button btnDialogDMClose = dialog.findViewById(R.id.btnDialogDMClose);
+
+        btnDialogDMClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         btnDialogDMAddClick.setOnClickListener(new View.OnClickListener() {
             @Override
