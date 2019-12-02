@@ -177,11 +177,6 @@ public class SanPhamActivity extends AppCompatActivity {
         dialog.dismiss();
     }
 
-    public void btDialogCustomAdd(View view) {
-        themHang();
-        dialog.dismiss();
-    }
-
     //#region action sort
     public class NameSort implements Comparator<SanPham> {
         @Override

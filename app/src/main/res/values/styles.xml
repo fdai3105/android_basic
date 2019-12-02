@@ -42,17 +42,26 @@
     <style name="DiaLog">
         <item name="android:windowCloseOnTouchOutside">true</item>
         <item name="android:textColor">@color/textWhite</item>
-        <!--        <item name="android:windowFrame">@null</item>-->
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsFloating">true</item>
-        <!--        <item name="android:windowContentOverlay">@null</item>-->
         <item name="android:windowTitleStyle">@null</item>
         <item name="android:windowAnimationStyle">@style/DialogPopupAnim</item>
-        <!--        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>-->
-        <!--        <item name="android:backgroundDimEnabled">true</item>-->
-        <!--        <item name="android:background">@android:color/transparent</item>-->
         <item name="android:windowMinWidthMajor">90%</item>
         <item name="android:windowMinWidthMinor">90%</item>
+    </style>
+
+    <style name="DiaLogBottom">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:textColor">@color/textWhite</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowTitleStyle">@null</item>
+
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+
+        <item name="android:windowAnimationStyle">@style/DialogPopupAnimBottom</item>
+
     </style>
 
     <style name="DiaLogLongClick" parent="Theme.AppCompat.Dialog">
@@ -61,9 +70,12 @@
     </style>
 
     <style name="DialogPopupAnim">
-<!--        <item name="android:windowEnterAnimation">@anim/popup_show</item>-->
-<!--        <item name="android:windowExitAnimation">@anim/popup_hide</item>-->
         <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+    <style name="DialogPopupAnimBottom">
+        <item name="android:windowEnterAnimation">@anim/popup_show</item>
+        <item name="android:windowExitAnimation">@anim/popup_hide</item>
     </style>
 </resources>

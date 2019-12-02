@@ -7,14 +7,12 @@ public class GioHang {
     private Date ngaymuahang;
     private int soluonghang;
     private SanPham sanPham;
-    private NhanVien nhanVien;
 
-    public GioHang(int id_donhang, Date ngaymuahang, int soluonghang, SanPham sanPham, NhanVien nhanVien) {
+    public GioHang(int id_donhang, Date ngaymuahang, int soluonghang, SanPham sanPham) {
         this.id_donhang = id_donhang;
         this.ngaymuahang = ngaymuahang;
         this.soluonghang = soluonghang;
         this.sanPham = sanPham;
-        this.nhanVien = nhanVien;
     }
 
     public int getId_donhang() {
@@ -47,14 +45,6 @@ public class GioHang {
 
     public void setSanPham(SanPham sanPham) {
         this.sanPham = sanPham;
-    }
-
-    public NhanVien getNhanVien() {
-        return nhanVien;
-    }
-
-    public void setNhanVien(NhanVien nhanVien) {
-        this.nhanVien = nhanVien;
     }
 
 

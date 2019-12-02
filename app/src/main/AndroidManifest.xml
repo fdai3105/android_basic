@@ -13,13 +13,16 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.NhanVienItemActivity"
-            android:parentActivityName=".activities.NhanVienActivity"/>
+            android:label="Nhân Viên"
+            android:parentActivityName=".activities.NhanVienActivity" />
         <activity
             android:name=".activities.DanhMucItemActivity"
+            android:label="Danh mục"
             android:parentActivityName=".activities.DanhMucActivity" />
         <activity
             android:name=".activities.GioHangActivity"
-            android:parentActivityName=".activities.SanPhamActivity" />
+            android:label="Giỏ hàng"
+            android:parentActivityName=".activities.SanPhamItemActivity" />
         <activity
             android:name=".activities.SanPhamItemActivity"
             android:parentActivityName=".activities.SanPhamActivity" />
