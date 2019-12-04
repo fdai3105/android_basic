@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.MenuItemCompat;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -111,8 +113,32 @@ public class SanPhamItemActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+            case R.id.btnXoaSPItemClick:
+                xoahang();
         }
         return true;
+    }
+
+    private void xoahang() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Xoá sản phẩm");
+        builder.setMessage("Bạn có muốn xoá " + SanPhamActivity.sanPhams.get(positionItem).getTen_sp() + " không?");
+        builder.setCancelable(true);
+        builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("Xoá", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                SanPhamActivity.sanPhams.remove(positionItem);
+                SanPhamActivity.sanPhamAdapter.notifyDataSetChanged();
+                onBackPressed();
+            }
+        });
+        builder.show();
     }
 
     public void btnThemVaoGioClick(View view) {

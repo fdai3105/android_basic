@@ -36,6 +36,23 @@ public class DanhMucActivity extends AppCompatActivity {
         setContentView(R.layout.activity_danhmuc);
         gvDanhMuc = findViewById(R.id.gvDanhMuc);
 
+        addData();
+
+        danhMucAdapter = new DanhMucAdapter(danhMucs, getApplicationContext());
+        gvDanhMuc.setAdapter(danhMucAdapter);
+
+        gvDanhMuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(), DanhMucItemActivity.class);
+                TextView textView = view.findViewById(R.id.tv_tenDM);
+                intent.putExtra("tenDM", textView.getText().toString());
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void addData() {
         //add all danhMuc
         ArrayList<DanhMuc> danhMucsTemp = new ArrayList<>();
         for (int i = 0; i < SanPhamActivity.sanPhams.size(); i++) {
@@ -53,19 +70,6 @@ public class DanhMucActivity extends AppCompatActivity {
             }
             if (!isFound) danhMucs.add(danhMuc);
         }
-
-        danhMucAdapter = new DanhMucAdapter(danhMucs, getApplicationContext());
-        gvDanhMuc.setAdapter(danhMucAdapter);
-
-        gvDanhMuc.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), DanhMucItemActivity.class);
-                TextView textView = view.findViewById(R.id.tv_tenDM);
-                intent.putExtra("tenDM", textView.getText().toString());
-                startActivity(intent);
-            }
-        });
     }
 
     @Override

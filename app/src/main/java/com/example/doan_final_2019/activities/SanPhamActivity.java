@@ -43,7 +43,7 @@ public class SanPhamActivity extends AppCompatActivity {
     EditText etSearch;
     Dialog dialog;
 
-    private SanPhamAdapter sanPhamAdapter;
+    public static SanPhamAdapter sanPhamAdapter;
     private Data dataSP = new Data();
 
     public static ArrayList<SanPham> sanPhams = new ArrayList<>();
@@ -171,11 +171,11 @@ public class SanPhamActivity extends AppCompatActivity {
     }
 
     public void btDialogCustomDel(View view) {
-        sanPhams.remove(positionLongClick);
-        sanPhamAdapter.notifyDataSetChanged();
-        Toast.makeText(this, "Xoá thành công!", Toast.LENGTH_SHORT).show();
+       xoaHang();
         dialog.dismiss();
     }
+
+
 
     //#region action sort
     public class NameSort implements Comparator<SanPham> {
@@ -231,7 +231,14 @@ public class SanPhamActivity extends AppCompatActivity {
     }
 //#endregion
 
-    //Dialog when click button ThemHang
+    //
+    private void xoaHang() {
+        sanPhams.remove(positionLongClick);
+        sanPhamAdapter.notifyDataSetChanged();
+        Toast.makeText(this, "Xoá thành công!", Toast.LENGTH_SHORT).show();
+    }
+
+    //
     private void themHang() {
         final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLog);
         dialog.setContentView(R.layout.dialog_sanpham_themhang);
@@ -292,6 +299,7 @@ public class SanPhamActivity extends AppCompatActivity {
         });
     }
 
+    //
     private void suaHang() {
         final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLog);
         dialog.setContentView(R.layout.dialog_sanpham_suahang);
@@ -363,6 +371,8 @@ public class SanPhamActivity extends AppCompatActivity {
         });
     }
 
+    // Add data intro Spinner
+    // Use in line 246 & 310
     private void addDataSpinner(List<String> danhMucList) {
         // add string to spinner
         for (SanPham sanPham : sanPhams) {
