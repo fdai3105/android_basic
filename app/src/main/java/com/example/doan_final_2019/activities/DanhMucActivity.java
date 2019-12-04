@@ -53,7 +53,7 @@ public class DanhMucActivity extends AppCompatActivity {
     }
 
     private void addData() {
-        //add all danhMuc
+        //get DanhMuc from SanPham arraylist
         ArrayList<DanhMuc> danhMucsTemp = new ArrayList<>();
         for (int i = 0; i < SanPhamActivity.sanPhams.size(); i++) {
             danhMucsTemp.add(SanPhamActivity.sanPhams.get(i).getDanhMuc());
