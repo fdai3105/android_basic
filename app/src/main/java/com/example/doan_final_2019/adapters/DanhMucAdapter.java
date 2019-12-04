@@ -10,9 +10,12 @@ import android.widget.TextView;
 
 import com.example.doan_final_2019.DownloadImage;
 import com.example.doan_final_2019.R;
+import com.example.doan_final_2019.activities.DanhMucItemActivity;
+import com.example.doan_final_2019.activities.SanPhamActivity;
 import com.example.doan_final_2019.models.DanhMuc;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class DanhMucAdapter extends BaseAdapter {
     private ArrayList<DanhMuc> danhMucs;
@@ -52,7 +55,11 @@ public class DanhMucAdapter extends BaseAdapter {
             dataitem = (MyView) convertView.getTag();
         }
         dataitem.tv_tenDM.setText(danhMucs.get(position).getTenDanhMuc());
-        //new DownloadImage(dataitem.iv_imageDM).execute(danhMucs.get(position).getAnhDanhMuc());
+        if (danhMucs.get(position).getAnhDanhMuc().trim().length() == 0) {
+            new DownloadImage(dataitem.iv_imageDM).execute("https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png");
+        } else {
+            new DownloadImage(dataitem.iv_imageDM).execute(danhMucs.get(position).getAnhDanhMuc());
+        }
         return convertView;
     }
 

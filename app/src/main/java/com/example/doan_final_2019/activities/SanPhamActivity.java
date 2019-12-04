@@ -129,11 +129,11 @@ public class SanPhamActivity extends AppCompatActivity {
         return true;
     }
 
-    //R.id.home == back button on action bar
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
+                //R.id.home == back button on action bar
                 onBackPressed();
                 break;
             case R.id.action_SortByName:
@@ -174,62 +174,6 @@ public class SanPhamActivity extends AppCompatActivity {
        xoaHang();
         dialog.dismiss();
     }
-
-
-
-    //#region action sort
-    public class NameSort implements Comparator<SanPham> {
-        @Override
-        public int compare(SanPham o1, SanPham o2) {
-            return o1.getTen_sp().compareToIgnoreCase(o2.getTen_sp());
-        }
-    }
-
-    public class PriceSortToLow implements Comparator<SanPham> {
-        @Override
-        public int compare(SanPham o1, SanPham o2) {
-            return o2.getGia_sp() >= o1.getGia_sp() ? 1 : -1;
-        }
-    }
-
-    public class PriceSortToHigh implements Comparator<SanPham> {
-        @Override
-        public int compare(SanPham o1, SanPham o2) {
-            return o1.getGia_sp() >= o2.getGia_sp() ? 1 : -1;
-        }
-    }
-
-    //    sort by new ( by time - date )
-    public class NewSort implements Comparator<SanPham> {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        int i;
-
-        @Override
-        public int compare(SanPham o1, SanPham o2) {
-            int yearTemp1 = o1.getNgaythem_sp().getYear();
-            int yearTemp2 = o2.getNgaythem_sp().getYear();
-//           the year minus 1900
-            if (yearTemp1 < 1000) {
-                yearTemp1 += 1900;
-            }
-            if (yearTemp2 < 1000) {
-                yearTemp2 += 1900;
-            }
-            String dateTemp1 = o1.getNgaythem_sp().getDate() + "-" + o1.getNgaythem_sp().getMonth() +
-                    "-" + yearTemp1 + " " + o1.getNgaythem_sp().getHours() + ":" +
-                    o1.getNgaythem_sp().getMinutes() + ":" + o1.getNgaythem_sp().getSeconds();
-            String dateTemp2 = o2.getNgaythem_sp().getDate() + "-" + o2.getNgaythem_sp().getMonth() +
-                    "-" + yearTemp2 + " " + o2.getNgaythem_sp().getHours() + ":"
-                    + o2.getNgaythem_sp().getMinutes() + ":" + o2.getNgaythem_sp().getSeconds();
-            try {
-                i = dateFormat.parse(dateTemp2).compareTo(dateFormat.parse(dateTemp1));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return i;
-        }
-    }
-//#endregion
 
     //
     private void xoaHang() {
@@ -390,4 +334,58 @@ public class SanPhamActivity extends AppCompatActivity {
             }
         }
     }
+
+    //#region action sort
+    public class NameSort implements Comparator<SanPham> {
+        @Override
+        public int compare(SanPham o1, SanPham o2) {
+            return o1.getTen_sp().compareToIgnoreCase(o2.getTen_sp());
+        }
+    }
+
+    public class PriceSortToLow implements Comparator<SanPham> {
+        @Override
+        public int compare(SanPham o1, SanPham o2) {
+            return o2.getGia_sp() >= o1.getGia_sp() ? 1 : -1;
+        }
+    }
+
+    public class PriceSortToHigh implements Comparator<SanPham> {
+        @Override
+        public int compare(SanPham o1, SanPham o2) {
+            return o1.getGia_sp() >= o2.getGia_sp() ? 1 : -1;
+        }
+    }
+
+    //    sort by new ( by time - date )
+    public class NewSort implements Comparator<SanPham> {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        int i;
+
+        @Override
+        public int compare(SanPham o1, SanPham o2) {
+            int yearTemp1 = o1.getNgaythem_sp().getYear();
+            int yearTemp2 = o2.getNgaythem_sp().getYear();
+//           the year minus 1900
+            if (yearTemp1 < 1000) {
+                yearTemp1 += 1900;
+            }
+            if (yearTemp2 < 1000) {
+                yearTemp2 += 1900;
+            }
+            String dateTemp1 = o1.getNgaythem_sp().getDate() + "-" + o1.getNgaythem_sp().getMonth() +
+                    "-" + yearTemp1 + " " + o1.getNgaythem_sp().getHours() + ":" +
+                    o1.getNgaythem_sp().getMinutes() + ":" + o1.getNgaythem_sp().getSeconds();
+            String dateTemp2 = o2.getNgaythem_sp().getDate() + "-" + o2.getNgaythem_sp().getMonth() +
+                    "-" + yearTemp2 + " " + o2.getNgaythem_sp().getHours() + ":"
+                    + o2.getNgaythem_sp().getMinutes() + ":" + o2.getNgaythem_sp().getSeconds();
+            try {
+                i = dateFormat.parse(dateTemp2).compareTo(dateFormat.parse(dateTemp1));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            return i;
+        }
+    }
+//#endregion
 }

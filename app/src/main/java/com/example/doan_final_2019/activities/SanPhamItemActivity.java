@@ -113,8 +113,10 @@ public class SanPhamItemActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
+                break;
             case R.id.btnXoaSPItemClick:
                 xoahang();
+                break;
         }
         return true;
     }

@@ -113,10 +113,11 @@ public class DanhMucActivity extends AppCompatActivity {
         btnDialogDMAddClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (etDialogTenDM.getText().toString().equals("")) {
+                if (etDialogTenDM.getText().toString().trim().length() == 0) {
                     Toast.makeText(DanhMucActivity.this, "Vui lòng nhập lại!", Toast.LENGTH_SHORT).show();
                 } else {
-                    danhMucs.add(new DanhMuc(etDialogAnhDM.getText().toString(), etDialogTenDM.getText().toString()));
+                    danhMucs.add(new DanhMuc(etDialogAnhDM.getText().toString(),
+                            etDialogTenDM.getText().toString()));
                     danhMucAdapter.notifyDataSetChanged();
                     dialog.dismiss();
                 }
