@@ -68,7 +68,11 @@ public class SanPhamItemActivity extends AppCompatActivity {
                 "-" + year + " " + SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getHours() + ":"
                 + SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getMinutes();
 
-        new DownloadImage(ivAnhItem).execute(SanPhamActivity.sanPhams.get(positionItem).getAnh_sp());
+        if (SanPhamActivity.sanPhams.get(positionItem).getAnh_sp().trim().length() == 0) {
+            ivAnhItem.setImageResource(R.drawable.img_empty);
+        } else {
+            new DownloadImage(ivAnhItem).execute(SanPhamActivity.sanPhams.get(positionItem).getAnh_sp());
+        }
         tvIDItem.setText("ID: " + SanPhamActivity.sanPhams.get(positionItem).getId_sp());
         tvTenItem.setText(SanPhamActivity.sanPhams.get(positionItem).getTen_sp());
         tvDanhMucItem.setText("Danh Mục: " + SanPhamActivity.sanPhams.get(positionItem).getDanhMuc().getTenDanhMuc());
@@ -136,7 +140,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SanPhamActivity.sanPhams.remove(positionItem);
-                SanPhamActivity.sanPhamAdapter.notifyDataSetChanged();
+                SanPhamActivity.resetSanPhamActivity();
                 onBackPressed();
             }
         });

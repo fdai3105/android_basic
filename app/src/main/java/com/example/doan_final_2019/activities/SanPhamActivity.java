@@ -165,13 +165,16 @@ public class SanPhamActivity extends AppCompatActivity {
         return true;
     }
 
+
+    //
     public void btDialogCustomEditClick(View view) {
         suaHang();
         dialog.dismiss();
     }
 
+    //
     public void btDialogCustomDel(View view) {
-       xoaHang();
+        xoaHang();
         dialog.dismiss();
     }
 
@@ -221,15 +224,15 @@ public class SanPhamActivity extends AppCompatActivity {
                         || etDialogGiaSP.getText().toString().trim().length() == 0) {
                     Toast.makeText(SanPhamActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
                 } else {
-                //  Date(year, month, day) => the year minus 1900.
+                    //  Date(year, month, day) => the year minus 1900.
                     try {
                         Date currentTime = Calendar.getInstance().getTime();
-                        SanPham sanPham = new SanPham(1, etDialogTenSP.getText().toString(),
+                        SanPham sanPham = new SanPham(sanPhams.size() + 1, etDialogTenSP.getText().toString(),
                                 new DanhMuc("", spDialogDMSP.getSelectedItem().toString()),
                                 Integer.parseInt(etDialogSoLuong.getText().toString()),
                                 Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",", "")),
                                 etDialogMoTaSP.getText().toString(),
-                                null, 0, currentTime, false);
+                                "", 0, currentTime, false);
                         sanPhams.add(sanPham);
                         sanPhamAdapter.notifyDataSetChanged();
                         Toast.makeText(SanPhamActivity.this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
@@ -248,7 +251,7 @@ public class SanPhamActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(SanPhamActivity.this, R.style.DiaLog);
         dialog.setContentView(R.layout.dialog_sanpham_suahang);
         dialog.show();
-
+        /*--------------------------------------------------------------------------------------*/
         final EditText etDialogEditTenSP = dialog.findViewById(R.id.etDialogEditTenSP);
         final Spinner spDialogEditDMSP = dialog.findViewById(R.id.spDialogEditDMSP);
         final EditText etDialogEditSoLuong = dialog.findViewById(R.id.etDialogEditSoLuong);
@@ -336,29 +339,29 @@ public class SanPhamActivity extends AppCompatActivity {
     }
 
     //#region action sort
-    public class NameSort implements Comparator<SanPham> {
+    private class NameSort implements Comparator<SanPham> {
         @Override
         public int compare(SanPham o1, SanPham o2) {
             return o1.getTen_sp().compareToIgnoreCase(o2.getTen_sp());
         }
     }
 
-    public class PriceSortToLow implements Comparator<SanPham> {
+    private class PriceSortToLow implements Comparator<SanPham> {
         @Override
         public int compare(SanPham o1, SanPham o2) {
             return o2.getGia_sp() >= o1.getGia_sp() ? 1 : -1;
         }
     }
 
-    public class PriceSortToHigh implements Comparator<SanPham> {
+    private class PriceSortToHigh implements Comparator<SanPham> {
         @Override
         public int compare(SanPham o1, SanPham o2) {
             return o1.getGia_sp() >= o2.getGia_sp() ? 1 : -1;
         }
     }
 
-    //    sort by new ( by time - date )
-    public class NewSort implements Comparator<SanPham> {
+    //sort by new ( by time - date )
+    private class NewSort implements Comparator<SanPham> {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         int i;
 
@@ -387,5 +390,9 @@ public class SanPhamActivity extends AppCompatActivity {
             return i;
         }
     }
-//#endregion
+    //#endregion
+
+    public static void resetSanPhamActivity() {
+        sanPhamAdapter.notifyDataSetChanged();
+    }
 }

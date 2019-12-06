@@ -19,8 +19,13 @@ import android.widget.Toast;
 import com.example.doan_final_2019.R;
 import com.example.doan_final_2019.adapters.DanhMucAdapter;
 import com.example.doan_final_2019.models.DanhMuc;
+import com.example.doan_final_2019.models.SanPham;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class DanhMucActivity extends AppCompatActivity {
@@ -89,6 +94,10 @@ public class DanhMucActivity extends AppCompatActivity {
                 themDM();
                 break;
             case R.id.action_sortDM:
+                Collections.sort(danhMucs, new NameSort());
+                danhMucAdapter.notifyDataSetChanged();
+                Toast.makeText(this, "Đã sắp xếp theo A-Z", Toast.LENGTH_SHORT).show();
+                break;
         }
         return true;
     }
@@ -123,5 +132,15 @@ public class DanhMucActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+
+    //action sort
+    private class NameSort implements Comparator<DanhMuc> {
+
+        @Override
+        public int compare(DanhMuc o1, DanhMuc o2) {
+            return o1.getTenDanhMuc().compareToIgnoreCase(o2.getTenDanhMuc());
+        }
     }
 }

@@ -53,7 +53,11 @@ public class NhanVienAdapter extends BaseAdapter {
         } else {
             dataitem = (MyView) convertView.getTag();
         }
-        new DownloadImage(dataitem.iv_anhNV).execute(nhanViens.get(position).getAnh_nv());
+        if (nhanViens.get(position).getAnh_nv().trim().length() == 0) {
+            dataitem.iv_anhNV.setImageResource(R.drawable.img_empty);
+        } else {
+            new DownloadImage(dataitem.iv_anhNV).execute(nhanViens.get(position).getAnh_nv());
+        }
         dataitem.tv_tenNV.setText(nhanViens.get(position).getTen_nv());
         dataitem.tv_chucviNV.setText(nhanViens.get(position).getChucvu_nv());
         return convertView;

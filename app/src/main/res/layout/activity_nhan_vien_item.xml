@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="fitXY"
-        android:src="@drawable/bg_item_nv" />
+        android:src="@drawable/bg_nv_cover" />
 
     <ImageView
         android:id="@+id/iv_itemAnhNV"
@@ -43,6 +43,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vị trí/chức vụ"
+            android:textColor="@color/textGrayy"
+            android:textSize="24sp" />
+        <TextView
+            android:id="@+id/iv_itemGioiTinhNV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giới tính"
             android:textColor="@color/textGrayy"
             android:textSize="24sp" />
 

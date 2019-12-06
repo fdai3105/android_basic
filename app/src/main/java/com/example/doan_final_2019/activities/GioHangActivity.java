@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.doan_final_2019.CurrencyFormat;
@@ -17,8 +19,8 @@ import java.util.ArrayList;
 
 public class GioHangActivity extends AppCompatActivity {
     GridView gridViewGH;
-    public  static TextView tv_tongTien, tv_tongSL;
-    CurrencyFormat currencyFormat = new CurrencyFormat();
+    LinearLayout llEmptyBox;
+    public static TextView tv_tongTien, tv_tongSL;
 
     int tongSL = 0;
     int tongTien = 0;
@@ -30,12 +32,17 @@ public class GioHangActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gio_hang);
 
         gridViewGH = findViewById(R.id.gridViewGH);
+        llEmptyBox = findViewById(R.id.llEmptyCart);
         tv_tongTien = findViewById(R.id.tv_tongTien);
         tv_tongSL = findViewById(R.id.tv_tongSL);
 
 
         GioHangAdapter gioHangAdapter = new GioHangAdapter(getApplicationContext(), SanPhamItemActivity.gioHangs);
         gridViewGH.setAdapter(gioHangAdapter);
+
+        if (!SanPhamItemActivity.gioHangs.isEmpty()) {
+            llEmptyBox.setVisibility(View.GONE);
+        }
 
         changeBill(SanPhamItemActivity.gioHangs);
     }
@@ -62,6 +69,6 @@ public class GioHangActivity extends AppCompatActivity {
         }
 
         tv_tongSL.setText(tongSL + "");
-        tv_tongTien.setText(currencyFormat.CurrencyFormat(String.valueOf(tongTien)) + " VND");
+        tv_tongTien.setText(new CurrencyFormat().CurrencyFormat(String.valueOf(tongTien)) + " VND");
     }
 }

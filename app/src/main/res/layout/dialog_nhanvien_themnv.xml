@@ -25,7 +25,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="100dp"
-                android:text="Sửa Nhân Viên"
+                android:text="Thêm Nhân Viên"
                 android:textColor="@color/bgWhite"
                 android:textSize="28sp" />
 
@@ -47,7 +47,7 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/etDialogSuaTenNV"
+                android:id="@+id/etDialogAddTenNV"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
@@ -58,7 +58,18 @@
                 android:textSize="21sp" />
 
             <EditText
-                android:id="@+id/etDialogSuaChucVuNV"
+                android:id="@+id/etDialogAddAnhNV"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:hint="Link ảnh nhân viên"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/textHint"
+                android:textSize="21sp" />
+
+            <EditText
+                android:id="@+id/etDialogAddChucVuNV"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginBottom="5dp"
@@ -95,6 +106,7 @@
                         android:layout_marginEnd="30dp"
                         android:hint="Nam"
                         android:textColor="@color/textGray"
+                        android:textColorHint="@color/textHint"
                         android:textSize="21sp" />
 
                     <RadioButton
@@ -103,12 +115,13 @@
                         android:layout_height="wrap_content"
                         android:hint="Nữ"
                         android:textColor="@color/textGray"
+                        android:textColorHint="@color/textHint"
                         android:textSize="21sp" />
                 </RadioGroup>
             </LinearLayout>
 
             <EditText
-                android:id="@+id/etDialogSuaDiaChiNV"
+                android:id="@+id/etDialogAddDiaChiNV"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginBottom="5dp"
@@ -118,7 +131,7 @@
                 android:textSize="21sp" />
 
             <EditText
-                android:id="@+id/etDialogSuaSDTNV"
+                android:id="@+id/etDialogAddSDTNV"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginBottom="5dp"
@@ -129,7 +142,7 @@
                 android:textSize="21sp" />
 
             <Button
-                android:id="@+id/btnDialogSuaNVClick"
+                android:id="@+id/btnDialogAddNVClick"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"

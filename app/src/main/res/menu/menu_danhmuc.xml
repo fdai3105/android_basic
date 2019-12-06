@@ -3,12 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_themDM"
-        android:icon="@drawable/ic_add"
+        android:icon="@drawable/ic_danhmuc_add"
         android:title="Thêm danh mục"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
     <item
-        android:id="@+id/action_sortDM"
         android:icon="@drawable/ic_sort"
         android:title="Sắp xếp"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/action_sortDM"
+                android:title="A - Z" />
+        </menu>
+    </item>
 </menu>

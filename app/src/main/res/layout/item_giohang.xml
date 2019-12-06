@@ -17,8 +17,8 @@
             android:layout_marginEnd="20dp"
             android:minWidth="110dp"
             android:minHeight="110dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_empty_image" />
+            android:scaleType="fitXY"
+            android:src="@drawable/img_empty" />
 
         <LinearLayout
             android:layout_width="0dp"

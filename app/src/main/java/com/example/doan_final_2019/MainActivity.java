@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.doan_final_2019.activities.DanhMucActivity;
+import com.example.doan_final_2019.activities.DanhMucItemActivity;
 import com.example.doan_final_2019.activities.InfoActivity;
 import com.example.doan_final_2019.activities.NhanVienActivity;
 import com.example.doan_final_2019.activities.SanPhamActivity;

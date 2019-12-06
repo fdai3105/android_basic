@@ -31,7 +31,7 @@
             android:id="@+id/imv_banhang"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/img_icon_sanpham" />
+            android:src="@drawable/ic_sanpham" />
 
         <TextView
             style="@style/Category"
@@ -57,7 +57,7 @@
             android:id="@+id/imv_banhang1"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/img_icon_danhmuc" />
+            android:src="@drawable/ic_danhmuc" />
 
         <TextView
             style="@style/Category"
@@ -83,7 +83,7 @@
             android:id="@+id/imv_banhang3"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/img_icon_nhanvien" />
+            android:src="@drawable/ic_nhanvien" />
 
         <TextView
             style="@style/Category"
@@ -109,7 +109,7 @@
             android:id="@+id/imv_banhang5"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/img_icon_info" />
+            android:src="@drawable/ic_info" />
 
         <TextView
             style="@style/Category"

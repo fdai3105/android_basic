@@ -29,7 +29,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ic_empty_image" />
+                    android:src="@drawable/img_empty" />
 
                 <TextView
                     android:id="@+id/tvIDItem"

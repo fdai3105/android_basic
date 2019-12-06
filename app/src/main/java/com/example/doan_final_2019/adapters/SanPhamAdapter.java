@@ -59,10 +59,14 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
         } else {
             dataitem = (MyView) convertView.getTag();
         }
-        new DownloadImage(dataitem.iv_imageSP).execute(sanPhams.get(position).getAnh_sp());
         dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + "");
         dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc()+"");
         dataitem.tv_giatienSP.setText(currencyFormat(String.valueOf(sanPhams.get(position).getGia_sp())) + " VND");
+        if (sanPhams.get(position).getAnh_sp().trim().length() == 0 ) {
+            dataitem.iv_imageSP.setImageResource(R.drawable.img_empty);
+        } else {
+            new DownloadImage(dataitem.iv_imageSP).execute(sanPhams.get(position).getAnh_sp());
+        }
         return convertView;
     }
 

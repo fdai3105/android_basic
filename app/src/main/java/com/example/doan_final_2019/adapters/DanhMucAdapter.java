@@ -56,7 +56,7 @@ public class DanhMucAdapter extends BaseAdapter {
         }
         dataitem.tv_tenDM.setText(danhMucs.get(position).getTenDanhMuc());
         if (danhMucs.get(position).getAnhDanhMuc().trim().length() == 0) {
-            new DownloadImage(dataitem.iv_imageDM).execute("https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png");
+            dataitem.iv_imageDM.setImageResource(R.drawable.img_empty);
         } else {
             new DownloadImage(dataitem.iv_imageDM).execute(danhMucs.get(position).getAnhDanhMuc());
         }
