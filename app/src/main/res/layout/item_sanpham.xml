@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shadow_195236"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:background="@drawable/bg_white_radius10dp_cheo"
         android:orientation="horizontal">
 
         <ImageView
@@ -14,7 +16,7 @@
             android:layout_width="110dp"
             android:layout_height="110dp"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
             android:layout_marginEnd="20dp"
             android:minWidth="110dp"
             android:minHeight="110dp"
@@ -37,6 +39,16 @@
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
+            <RatingBar
+                android:id="@+id/rb_ratingSP"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:max="5"
+                android:scaleX="1"
+                android:scaleY="1" />
+
             <TextView
                 android:id="@+id/tv_danhmucSP"
                 android:layout_width="wrap_content"
@@ -56,10 +68,4 @@
                 android:textSize="18dp" />
         </LinearLayout>
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/first" />
 </LinearLayout>

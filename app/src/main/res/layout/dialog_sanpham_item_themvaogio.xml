@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_vertical"
-    android:background="@drawable/bg_dialog_themhang"
+    android:background="@drawable/bg_white_radius26dp"
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="140dp"
+                android:layout_marginEnd="200dp"
                 android:text="Thêm Hàng"
                 android:textColor="@color/bgWhite"
                 android:textSize="22sp" />
@@ -47,10 +47,10 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
@@ -60,7 +60,7 @@
                     android:layout_marginEnd="100dp"
                     android:text="Số lượng :"
                     android:textColor="@color/textGray"
-                    android:textSize="18sp" />
+                    android:textSize="24sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -69,8 +69,8 @@
 
                     <Button
                         android:id="@+id/btn_giamSoLuong"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/bg_button_category"
                         android:text="-" />
 
@@ -78,16 +78,18 @@
                         android:id="@+id/tv_soluong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:gravity="center"
                         android:maxWidth="30dp"
-                        android:textColor="@color/textGray"
                         android:minWidth="30dp"
-                        android:text="1" />
+                        android:text="1"
+                        android:textColor="@color/textGray"
+                        android:textSize="20sp" />
 
                     <Button
                         android:id="@+id/btn_tangSoLuong"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
                         android:background="@drawable/bg_button_category"
                         android:text="+" />
                 </LinearLayout>
@@ -97,18 +99,19 @@
                 android:id="@+id/tv_tongTien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
-                android:textColor="@color/textGray"
-                android:textSize="18sp"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
+                android:gravity="right"
                 android:paddingEnd="40dp"
-                android:text="Tổng tiền:"/>
+                android:text="Tổng tiền:"
+                android:textColor="@color/textGray"
+                android:textSize="20sp" />
 
             <Button
                 android:id="@+id/btn_themVaoGio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textSize="20sp"
                 android:background="@drawable/bg_button_category"
                 android:text="Thêm vào giỏ" />
         </LinearLayout>

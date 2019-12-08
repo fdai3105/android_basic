@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.doan_final_2019.DownloadImage;
@@ -53,6 +54,7 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
 
             dataitem.iv_imageSP = convertView.findViewById(R.id.iv_imageSP);
             dataitem.tv_tenSP = convertView.findViewById(R.id.tv_tenSP);
+            dataitem.rb_ratingSP = convertView.findViewById(R.id.rb_ratingSP);
             dataitem.tv_danhmucSP = convertView.findViewById(R.id.tv_danhmucSP);
             dataitem.tv_giatienSP = convertView.findViewById(R.id.tv_giatienSP);
             convertView.setTag(dataitem);
@@ -60,6 +62,7 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
             dataitem = (MyView) convertView.getTag();
         }
         dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + "");
+        dataitem.rb_ratingSP.setRating(sanPhams.get(position).getLuongnguoidung_sp());
         dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc()+"");
         dataitem.tv_giatienSP.setText(currencyFormat(String.valueOf(sanPhams.get(position).getGia_sp())) + " VND");
         if (sanPhams.get(position).getAnh_sp().trim().length() == 0 ) {
@@ -73,6 +76,7 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
 
     private static class MyView {
         ImageView iv_imageSP;
+        RatingBar rb_ratingSP;
         TextView tv_tenSP, tv_danhmucSP, tv_giatienSP;
     }
 

@@ -28,7 +28,7 @@ public class NhanVienActivity extends AppCompatActivity {
     GridView gridViewNV;
     Data data = new Data();
     public static ArrayList<NhanVien> nhanViens = new ArrayList<>();
-    static NhanVienAdapter nhanVienAdapter;
+    private static NhanVienAdapter nhanVienAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

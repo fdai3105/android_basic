@@ -58,6 +58,7 @@ public class NhanVienItemActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_item_nhanvien, menu);
         getSupportActionBar().setElevation(0);
+        getSupportActionBar().setTitle("Nhân viên: "+NhanVienActivity.nhanViens.get(postion).getTen_nv());
 
         return true;
     }

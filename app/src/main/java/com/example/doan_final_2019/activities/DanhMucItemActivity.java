@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.GridView;
 
@@ -23,7 +24,7 @@ public class DanhMucItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_danh_muc_item);
+        setContentView(R.layout.activity_danhmuc_item);
 
         gvDanhMucItem = findViewById(R.id.gvDanhMucItem);
 
@@ -35,6 +36,12 @@ public class DanhMucItemActivity extends AppCompatActivity {
         }
         sanPhamAdapter = new SanPhamAdapter(getApplicationContext(),sanPhams);
         gvDanhMucItem.setAdapter(sanPhamAdapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getSupportActionBar().setTitle("Danh mục: "+getIntent().getStringExtra("tenDM"));
+        return true;
     }
 
     @Override

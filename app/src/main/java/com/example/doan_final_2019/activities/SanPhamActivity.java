@@ -43,7 +43,7 @@ public class SanPhamActivity extends AppCompatActivity {
     EditText etSearch;
     Dialog dialog;
 
-    public static SanPhamAdapter sanPhamAdapter;
+    private static SanPhamAdapter sanPhamAdapter;
     private Data dataSP = new Data();
 
     public static ArrayList<SanPham> sanPhams = new ArrayList<>();
@@ -63,6 +63,8 @@ public class SanPhamActivity extends AppCompatActivity {
         if (sanPhams.isEmpty()) {
             dataSP.DataSanPham(sanPhams);
         }
+        setHint(sanPhams);
+        etSearch.setHint("Tìm kiếm: "+sanPhams.size() + " sản phẩm có sẵn");
 
         gridViewSP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -105,6 +107,10 @@ public class SanPhamActivity extends AppCompatActivity {
                 sanPhamAdapter.getFilter().filter(s);
             }
         });
+    }
+
+    private void setHint(ArrayList<SanPham> sanPhamsHint) {
+        etSearch.setHint("Tìm kiếm: "+sanPhamsHint.size() + " sản phẩm có sẵn");
     }
 
     @Override
@@ -182,6 +188,7 @@ public class SanPhamActivity extends AppCompatActivity {
     private void xoaHang() {
         sanPhams.remove(positionLongClick);
         sanPhamAdapter.notifyDataSetChanged();
+        setHint(sanPhams);
         Toast.makeText(this, "Xoá thành công!", Toast.LENGTH_SHORT).show();
     }
 
@@ -235,6 +242,7 @@ public class SanPhamActivity extends AppCompatActivity {
                                 "", 0, currentTime, false);
                         sanPhams.add(sanPham);
                         sanPhamAdapter.notifyDataSetChanged();
+                        setHint(sanPhams);
                         Toast.makeText(SanPhamActivity.this, "Đã thêm thành công", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     } catch (Exception e) {
@@ -307,6 +315,7 @@ public class SanPhamActivity extends AppCompatActivity {
                                 sanPhams.get(positionLongClick).getNgaythem_sp(),
                                 sanPhams.get(positionLongClick).getTrangThaiGioHang()));
                         sanPhamAdapter.notifyDataSetChanged();
+                        setHint(sanPhams);
                         Toast.makeText(SanPhamActivity.this, "Đã sửa thành công!", Toast.LENGTH_SHORT).show();
                         dialog.dismiss();
                     } catch (Exception e) {

@@ -93,6 +93,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_item_sanpham, menu);
         getSupportActionBar().setElevation(0);
+        getSupportActionBar().setTitle("Sản phẩm: "+SanPhamActivity.sanPhams.get(positionItem).getTen_sp());
 
         //Badge Cart on actionBar
         final MenuItem menuItem = menu.findItem(R.id.action_cart);
