@@ -16,9 +16,8 @@ public class SanPham {
     private String anh_sp;
     private float luongnguoidung_sp;
     private Date ngaythem_sp;
-    private Boolean trangThaiGioHang;
 
-    public SanPham(int id_sp, String ten_sp, DanhMuc danhMuc, int soluong_sp, int gia_sp, String mota_sp, String anh_sp, float luongnguoidung_sp, Date ngaythem_sp, Boolean trangThaiGioHang) {
+    public SanPham(int id_sp, String ten_sp, DanhMuc danhMuc, int soluong_sp, int gia_sp, String mota_sp, String anh_sp, float luongnguoidung_sp, Date ngaythem_sp) {
         this.id_sp = id_sp;
         this.ten_sp = ten_sp;
         this.danhMuc = danhMuc;
@@ -28,7 +27,6 @@ public class SanPham {
         this.anh_sp = anh_sp;
         this.luongnguoidung_sp = luongnguoidung_sp;
         this.ngaythem_sp = ngaythem_sp;
-        this.trangThaiGioHang = trangThaiGioHang;
     }
 
     public DanhMuc getDanhMuc() {
@@ -37,14 +35,6 @@ public class SanPham {
 
     public void setDanhMuc(DanhMuc danhMuc) {
         this.danhMuc = danhMuc;
-    }
-
-    public Boolean getTrangThaiGioHang() {
-        return trangThaiGioHang;
-    }
-
-    public void setTrangThaiGioHang(Boolean trangThaiGioHang) {
-        this.trangThaiGioHang = trangThaiGioHang;
     }
 
     public Date getNgaythem_sp() {

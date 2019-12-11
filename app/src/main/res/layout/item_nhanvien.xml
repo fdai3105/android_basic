@@ -1,35 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center|top"
-    android:background="@drawable/bg_white_radius10dp">
+    android:layout_width="match_parent"
+   android:layout_height="match_parent"
+    android:background="@drawable/shadow_nhanvien"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_anhNV"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="fitXY"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/img_empty" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_tenNV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tên nhân viên"
-        android:textColor="@color/textGray"
-        android:textSize="24sp"
-        android:layout_marginBottom="2dp"/>
+        <ImageView
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:id="@+id/iv_anhNV"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/img_empty" />
 
-    <TextView
-        android:id="@+id/tv_chucviNV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chức vụ"
-        android:textColor="@color/textGrayy"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"/>
+        <TextView
+            android:id="@+id/tv_tenNV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="Tên nhân viên"
+            android:gravity="center|top"
+            android:textColor="@color/textGray"
+            android:textSize="24sp" />
 
+        <TextView
+            android:id="@+id/tv_chucviNV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Chức vụ"
+            android:layout_marginBottom="5dp"
+            android:gravity="center"
+            android:textColor="@color/textGrayy"
+            android:textSize="20sp" />
+    </LinearLayout>
 </LinearLayout>

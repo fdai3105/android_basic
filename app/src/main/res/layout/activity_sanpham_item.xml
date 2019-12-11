@@ -48,8 +48,7 @@
                     android:text="Tên sản phẩm"
                     android:textColor="@color/textGray"
                     android:textSize="32sp"
-
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -149,6 +148,7 @@
                     android:background="@color/bgWhitee" />
 
                 <TextView
+                    android:id="@+id/tvMoTaItem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="5dp"

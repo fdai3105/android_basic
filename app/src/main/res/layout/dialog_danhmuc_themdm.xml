@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginBottom="5dp"
-                android:hint="Mô tả: "
+                android:hint="Link ảnh: "
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/textHint"
                 android:textSize="21sp" />

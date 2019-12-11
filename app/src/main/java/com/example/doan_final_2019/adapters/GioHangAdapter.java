@@ -67,7 +67,7 @@ public class GioHangAdapter extends BaseAdapter {
         dataitem.tv_soluongGH.setText("Số lượng: " + gioHangs.get(position).getSoluonghang() + "");
         new DownloadImage(dataitem.iv_imageGH).execute(gioHangs.get(position).getSanPham().getAnh_sp());
         dataitem.tv_tenGH.setText(gioHangs.get(position).getSanPham().getTen_sp());
-        dataitem.tv_danhmucGH.setText("Danh mục " + gioHangs.get(position).getSanPham().getDanhMuc().getTenDanhMuc() + "");
+        dataitem.tv_danhmucGH.setText("Danh mục: " + gioHangs.get(position).getSanPham().getDanhMuc().getTenDanhMuc() + "");
         dataitem.tv_giatienGH.setText("Đơn giá "+(currencyFormat.CurrencyFormat(String.valueOf(gioHangs.get(position).getSanPham().getGia_sp())))+" VND");
         dataitem.btn_xoaGioHang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +93,10 @@ public class GioHangAdapter extends BaseAdapter {
 
         for (int i = 0; i < gioHangs.size(); i++) {
             tongTien = (gioHangs.get(i).getSanPham().getGia_sp() * gioHangs.get(i).getSoluonghang()) + tongTien;
+        }
+
+        if (tongSL == 0 && tongTien == 0) {
+            GioHangActivity.llEmptyBox.setVisibility(View.VISIBLE);
         }
 
         GioHangActivity.tv_tongSL.setText(tongSL + "");

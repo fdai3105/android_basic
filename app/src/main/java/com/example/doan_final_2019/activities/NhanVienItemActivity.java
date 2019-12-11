@@ -28,7 +28,7 @@ public class NhanVienItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nhan_vien_item);
+        setContentView(R.layout.activity_nhanvien_item);
 
         tv_itemAnhNV = findViewById(R.id.iv_itemAnhNV);
         tv_itemTenNV = findViewById(R.id.iv_itemTenNV);
@@ -45,7 +45,7 @@ public class NhanVienItemActivity extends AppCompatActivity {
         if (NhanVienActivity.nhanViens.get(postion).getAnh_nv().trim().length() == 0) {
             tv_itemAnhNV.setImageResource(R.drawable.img_empty);
         } else {
-            new DownloadImage(tv_itemAnhNV).execute(SanPhamActivity.sanPhams.get(postion).getAnh_sp());
+            new DownloadImage(tv_itemAnhNV).execute(NhanVienActivity.nhanViens.get(postion).getAnh_nv());
         }
         tv_itemTenNV.setText(NhanVienActivity.nhanViens.get(postion).getTen_nv() + "");
         tv_itemChucVuNV.setText(NhanVienActivity.nhanViens.get(postion).getChucvu_nv() + "");

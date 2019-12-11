@@ -67,6 +67,26 @@
                 android:textSize="21sp" />
 
             <EditText
+                android:id="@+id/etDialogAnh"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginBottom="5dp"
+                android:hint="Link ảnh:"
+                android:inputType="number"
+                android:textColor="@color/textGray"
+                android:textColorHint="@color/textHint"
+                android:textSize="21sp" />
+
+            <RatingBar
+                android:id="@+id/rbDialogRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numStars="5"
+                android:stepSize="0.1"
+                android:isIndicator="false"/>
+
+            <EditText
                 android:id="@+id/etDialogSoLuong"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

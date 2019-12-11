@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class GioHangActivity extends AppCompatActivity {
     GridView gridViewGH;
-    LinearLayout llEmptyBox;
+    public static LinearLayout llEmptyBox;
     public static TextView tv_tongTien, tv_tongSL;
 
     int tongSL = 0;
@@ -29,22 +29,25 @@ public class GioHangActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gio_hang);
+        setContentView(R.layout.activity_giohang);
 
         gridViewGH = findViewById(R.id.gridViewGH);
         llEmptyBox = findViewById(R.id.llEmptyCart);
         tv_tongTien = findViewById(R.id.tv_tongTien);
         tv_tongSL = findViewById(R.id.tv_tongSL);
 
+        checkEmptyGH(SanPhamItemActivity.gioHangs);
 
         GioHangAdapter gioHangAdapter = new GioHangAdapter(getApplicationContext(), SanPhamItemActivity.gioHangs);
         gridViewGH.setAdapter(gioHangAdapter);
 
-        if (!SanPhamItemActivity.gioHangs.isEmpty()) {
+        changeBill(SanPhamItemActivity.gioHangs);
+    }
+
+    public static void checkEmptyGH(ArrayList<GioHang> gioHangs) {
+        if (!gioHangs.isEmpty()) {
             llEmptyBox.setVisibility(View.GONE);
         }
-
-        changeBill(SanPhamItemActivity.gioHangs);
     }
 
     @Override

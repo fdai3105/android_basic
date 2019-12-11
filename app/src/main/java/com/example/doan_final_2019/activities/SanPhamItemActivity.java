@@ -33,7 +33,7 @@ import java.util.Date;
 
 public class SanPhamItemActivity extends AppCompatActivity {
     ImageView ivAnhItem;
-    TextView tvIDItem, tvTenItem, tvDanhMucItem, tvSoLuongItem, tvGiaItem, tvNgayThemItem;
+    TextView tvIDItem, tvTenItem, tvDanhMucItem, tvSoLuongItem, tvGiaItem, tvNgayThemItem, tvMoTaItem;
     RatingBar rbItem;
     public static TextView tvCart;
     int positionItem;
@@ -44,7 +44,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_san_pham_item);
+        setContentView(R.layout.activity_sanpham_item);
 
 //        ***************************************************
         tvIDItem = findViewById(R.id.tvIDItem);
@@ -55,6 +55,8 @@ public class SanPhamItemActivity extends AppCompatActivity {
         tvGiaItem = findViewById(R.id.tvGiaItem);
         rbItem = findViewById(R.id.rbItem);
         tvNgayThemItem = findViewById(R.id.tvNgayThemItem);
+        tvMoTaItem = findViewById(R.id.tvMoTaItem);
+
 //        ***************************************************
         positionItem = getIntent().getIntExtra("positionItem", 0);
 //         ;
@@ -73,6 +75,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
         } else {
             new DownloadImage(ivAnhItem).execute(SanPhamActivity.sanPhams.get(positionItem).getAnh_sp());
         }
+
         tvIDItem.setText("ID: " + SanPhamActivity.sanPhams.get(positionItem).getId_sp());
         tvTenItem.setText(SanPhamActivity.sanPhams.get(positionItem).getTen_sp());
         tvDanhMucItem.setText("Danh Mục: " + SanPhamActivity.sanPhams.get(positionItem).getDanhMuc().getTenDanhMuc());
@@ -86,6 +89,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
 
         }
         tvNgayThemItem.setText("Ngày thêm: " + ngayThem);
+        tvMoTaItem.setText(SanPhamActivity.sanPhams.get(positionItem).getMota_sp()+"");
 
     }
 

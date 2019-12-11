@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.RatingBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -204,8 +205,10 @@ public class SanPhamActivity extends AppCompatActivity {
         final EditText etDialogTenSP = dialog.findViewById(R.id.etDialogTenSP);
         final EditText etDialogSoLuong = dialog.findViewById(R.id.etDialogSoLuong);
         final Spinner spDialogDMSP = dialog.findViewById(R.id.spDialogDMSP);
+        final RatingBar rbDialogRating = dialog.findViewById(R.id.rbDialogRating);
         final EditText etDialogGiaSP = dialog.findViewById(R.id.etDialogGiaSP);
         final EditText etDialogMoTaSP = dialog.findViewById(R.id.etDialogMoTaSP);
+        final EditText etDialogAnh = dialog.findViewById(R.id.etDialogAnh);
 
         List<String> danhMucList = new ArrayList<>();
         addDataSpinner(danhMucList);
@@ -239,7 +242,8 @@ public class SanPhamActivity extends AppCompatActivity {
                                 Integer.parseInt(etDialogSoLuong.getText().toString()),
                                 Integer.parseInt(etDialogGiaSP.getText().toString().replace(".", ",").replace(",", "")),
                                 etDialogMoTaSP.getText().toString(),
-                                "", 0, currentTime, false);
+                                etDialogAnh.getText().toString(),
+                                Float.parseFloat(String.valueOf(rbDialogRating.getRating())), currentTime);
                         sanPhams.add(sanPham);
                         sanPhamAdapter.notifyDataSetChanged();
                         setHint(sanPhams);
@@ -312,8 +316,7 @@ public class SanPhamActivity extends AppCompatActivity {
                                 etDialogEditMoTaSP.getText().toString(),
                                 sanPhams.get(positionLongClick).getAnh_sp(),
                                 sanPhams.get(positionLongClick).getLuongnguoidung_sp(),
-                                sanPhams.get(positionLongClick).getNgaythem_sp(),
-                                sanPhams.get(positionLongClick).getTrangThaiGioHang()));
+                                sanPhams.get(positionLongClick).getNgaythem_sp()));
                         sanPhamAdapter.notifyDataSetChanged();
                         setHint(sanPhams);
                         Toast.makeText(SanPhamActivity.this, "Đã sửa thành công!", Toast.LENGTH_SHORT).show();

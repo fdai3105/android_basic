@@ -1,6 +1,7 @@
 package com.example.doan_final_2019.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +22,7 @@ import java.util.ArrayList;
 public class SanPhamAdapter extends BaseAdapter implements Filterable {
     private Context context;
     private ArrayList<SanPham> sanPhams;
-
-    public ArrayList<SanPham> orig;
+    private ArrayList<SanPham> sanPhamsFilter;
 
     public SanPhamAdapter(Context context, ArrayList<SanPham> sanPhams) {
         this.context = context;
@@ -63,9 +63,9 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
         }
         dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + "");
         dataitem.rb_ratingSP.setRating(sanPhams.get(position).getLuongnguoidung_sp());
-        dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc()+"");
+        dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc() + "");
         dataitem.tv_giatienSP.setText(currencyFormat(String.valueOf(sanPhams.get(position).getGia_sp())) + " VND");
-        if (sanPhams.get(position).getAnh_sp().trim().length() == 0 ) {
+        if (sanPhams.get(position).getAnh_sp().trim().length() == 0) {
             dataitem.iv_imageSP.setImageResource(R.drawable.img_empty);
         } else {
             new DownloadImage(dataitem.iv_imageSP).execute(sanPhams.get(position).getAnh_sp());
@@ -93,11 +93,11 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
             protected FilterResults performFiltering(CharSequence constraint) {
                 final FilterResults oReturn = new FilterResults();
                 final ArrayList<SanPham> results = new ArrayList<SanPham>();
-                if (orig == null)
-                    orig = sanPhams;
+                if (sanPhamsFilter == null)
+                    sanPhamsFilter = sanPhams;
                 if (constraint != null) {
-                    if (orig != null && orig.size() > 0) {
-                        for (final SanPham s : orig) {
+                    if (sanPhamsFilter != null && sanPhamsFilter.size() > 0) {
+                        for (final SanPham s : sanPhamsFilter) {
                             if (s.getTen_sp().toLowerCase()
                                     .contains(constraint.toString()))
                                 results.add(s);
