@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,8 +34,9 @@ import java.util.Date;
 
 public class SanPhamItemActivity extends AppCompatActivity {
     ImageView ivAnhItem;
-    TextView tvIDItem, tvTenItem, tvDanhMucItem, tvSoLuongItem, tvGiaItem, tvNgayThemItem, tvMoTaItem;
+    TextView tvIDItem, tvTenItem, tvDanhMucItem, tvSoLuongItem, tvGiaItem, tvNgayThemItem, tvMoTaItem,tv_themhangvaogio;
     RatingBar rbItem;
+    LinearLayout btnThemVaoGio;
     public static TextView tvCart;
     int positionItem;
 
@@ -56,10 +58,17 @@ public class SanPhamItemActivity extends AppCompatActivity {
         rbItem = findViewById(R.id.rbItem);
         tvNgayThemItem = findViewById(R.id.tvNgayThemItem);
         tvMoTaItem = findViewById(R.id.tvMoTaItem);
+        tv_themhangvaogio = findViewById(R.id.tv_themhangvaogio);
+        btnThemVaoGio = findViewById(R.id.btnThemVaoGio);
 
 //        ***************************************************
         positionItem = getIntent().getIntExtra("positionItem", 0);
-//         ;
+//
+        if (SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp()==0) {
+            tv_themhangvaogio.setText("Hết hàng!");
+            btnThemVaoGio.setBackgroundColor(Color.RED);
+        }
+
         int year = SanPhamActivity.sanPhams.get(positionItem).getNgaythem_sp().getYear();
         if (year < 1000) {
             year += 1900;
@@ -153,56 +162,59 @@ public class SanPhamItemActivity extends AppCompatActivity {
     }
 
     public void btnThemVaoGioClick(View view) {
-        final Dialog dialog = new Dialog(this, R.style.DiaLogBottom);
-        dialog.setContentView(R.layout.dialog_sanpham_item_themvaogio);
-        Window window = dialog.getWindow();
-        window.setGravity(Gravity.BOTTOM);
-        dialog.show();
+        if (SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp() == 0 ) {
+            Toast.makeText(this, "Vui lòng quay lại sau!", Toast.LENGTH_SHORT).show();
+        } else {
+            final Dialog dialog = new Dialog(this, R.style.DiaLogBottom);
+            dialog.setContentView(R.layout.dialog_sanpham_item_themvaogio);
+            Window window = dialog.getWindow();
+            window.setGravity(Gravity.BOTTOM);
+            dialog.show();
 
-        final TextView tv_soluong = dialog.findViewById(R.id.tv_soluong);
-        Button btn_tangSoLuong = dialog.findViewById(R.id.btn_tangSoLuong);
-        Button btn_giamSoLuong = dialog.findViewById(R.id.btn_giamSoLuong);
-        final TextView tv_tongTien = dialog.findViewById(R.id.tv_tongTien);
-        Button btn_themVaoGio = dialog.findViewById(R.id.btn_themVaoGio);
+            final TextView tv_soluong = dialog.findViewById(R.id.tv_soluong);
+            Button btn_tangSoLuong = dialog.findViewById(R.id.btn_tangSoLuong);
+            Button btn_giamSoLuong = dialog.findViewById(R.id.btn_giamSoLuong);
+            final TextView tv_tongTien = dialog.findViewById(R.id.tv_tongTien);
+            Button btn_themVaoGio = dialog.findViewById(R.id.btn_themVaoGio);
 
-        tv_tongTien.setText("Tổng tiền: " + currencyFormat.CurrencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp())) + " VND");
-        btn_tangSoLuong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                tv_soluong.setText(Integer.parseInt(tv_soluong.getText().toString()) + 1 + "");
-                tv_tongTien.setText("Tổng tiền: " + currencyFormat.CurrencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp() * Integer.parseInt(tv_soluong.getText().toString()))) + " VND");
-            }
-        });
-        btn_giamSoLuong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Integer.parseInt(tv_soluong.getText().toString()) > 0) {
-                    tv_soluong.setText(Integer.parseInt(tv_soluong.getText().toString()) - 1 + "");
+            tv_tongTien.setText("Tổng tiền: " + currencyFormat.CurrencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp())) + " VND");
+            btn_tangSoLuong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tv_soluong.setText(Integer.parseInt(tv_soluong.getText().toString()) + 1 + "");
                     tv_tongTien.setText("Tổng tiền: " + currencyFormat.CurrencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp() * Integer.parseInt(tv_soluong.getText().toString()))) + " VND");
                 }
-            }
-        });
-
-        btn_themVaoGio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (Integer.parseInt(tv_soluong.getText().toString()) > 0) {
-                    SanPhamActivity.numberCart++;
-                    SanPhamActivity.tvCart.setText(SanPhamActivity.numberCart + "");
-                    Date currentTime = Calendar.getInstance().getTime();
-
-                    GioHang gioHang = new GioHang(gioHangs.size() + 1, currentTime, Integer.parseInt(tv_soluong.getText().toString()), SanPhamActivity.sanPhams.get(positionItem));
-                    gioHangs.add(gioHang);
-
-                    tvCart.setText(SanPhamActivity.numberCart + "");
-                    Toast.makeText(SanPhamItemActivity.this, "Đã thêm sản phẩm!", Toast.LENGTH_SHORT).show();
-                    dialog.dismiss();
-                } else {
-                    Toast.makeText(SanPhamItemActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+            });
+            btn_giamSoLuong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Integer.parseInt(tv_soluong.getText().toString()) > 0) {
+                        tv_soluong.setText(Integer.parseInt(tv_soluong.getText().toString()) - 1 + "");
+                        tv_tongTien.setText("Tổng tiền: " + currencyFormat.CurrencyFormat(String.valueOf(SanPhamActivity.sanPhams.get(positionItem).getGia_sp() * Integer.parseInt(tv_soluong.getText().toString()))) + " VND");
+                    }
                 }
+            });
 
-            }
-        });
+            btn_themVaoGio.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Integer.parseInt(tv_soluong.getText().toString()) > 0) {
+                        SanPhamActivity.numberCart++;
+                        SanPhamActivity.tvCart.setText(SanPhamActivity.numberCart + "");
+                        Date currentTime = Calendar.getInstance().getTime();
 
+                        GioHang gioHang = new GioHang(gioHangs.size() + 1, currentTime, Integer.parseInt(tv_soluong.getText().toString()), SanPhamActivity.sanPhams.get(positionItem));
+                        gioHangs.add(gioHang);
+
+                        tvCart.setText(SanPhamActivity.numberCart + "");
+                        Toast.makeText(SanPhamItemActivity.this, "Đã thêm sản phẩm!", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    } else {
+                        Toast.makeText(SanPhamItemActivity.this, "Vui lòng kiểm tra lại!", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+        }
     }
 }

@@ -17,13 +17,13 @@
     <TextView
         android:id="@+id/tv_tenDM"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         android:layout_gravity="bottom"
+        android:layout_marginTop="-66dp"
         android:background="@color/textGrayyTrans70"
+        android:gravity="center_vertical|center"
         android:padding="1dp"
-        android:textAlignment="center"
         android:textColor="@color/textWhite"
         android:textSize="25dp"
-        android:layout_marginTop="-36dp"
         tools:text="Test" />
 </LinearLayout>

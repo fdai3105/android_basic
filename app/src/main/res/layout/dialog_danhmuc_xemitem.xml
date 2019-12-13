@@ -63,7 +63,7 @@
                         <ImageView
                             android:id="@+id/ivAnhItem"
                             android:layout_width="match_parent"
-                            android:layout_height="300dp"
+                            android:layout_height="250dp"
                             android:scaleType="fitXY"
                             android:src="@drawable/img_empty" />
 
@@ -189,6 +189,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="5dp"
+                            android:lineSpacingExtra="5dp"
                             android:text="Mô tả Mô tả Mô tả Mô tả Mô tả Mô tả
 ả Mô tả tả Mô tả Mô tả Môtả Mô tả Mô tả Mô tả Mô Mô tả Mô tả Mô tả Mô"
                             android:textSize="20dp" />

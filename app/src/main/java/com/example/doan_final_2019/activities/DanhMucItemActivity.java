@@ -71,6 +71,7 @@ public class DanhMucItemActivity extends AppCompatActivity {
         RatingBar rbItem = dialog.findViewById(R.id.rbItem);
         TextView tvSoLuongItem = dialog.findViewById(R.id.tvSoLuongItem);
         TextView tvNgayThemItem = dialog.findViewById(R.id.tvNgayThemItem);
+        TextView tvMoTaItem = dialog.findViewById(R.id.tvMoTaItem);
         /*---------------------------------------------*/
         btnDialogClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class DanhMucItemActivity extends AppCompatActivity {
         if (sanPhams.get(p).getAnh_sp().trim().length() == 0) {
             ivAnhItem.setImageResource(R.drawable.img_empty);
         } else {
-            new DownloadImage(ivAnhItem).execute(SanPhamActivity.sanPhams.get(p).getAnh_sp());
+            new DownloadImage(ivAnhItem).execute(sanPhams.get(p).getAnh_sp());
         }
 
         tvIDItem.setText("ID: " + sanPhams.get(p).getId_sp() + "");
@@ -105,6 +106,7 @@ public class DanhMucItemActivity extends AppCompatActivity {
         rbItem.setRating(sanPhams.get(p).getLuongnguoidung_sp());
         tvSoLuongItem.setText("Số lượng: " + sanPhams.get(p).getSoluong_sp());
         tvNgayThemItem.setText("Ngày thêm: " + ngayThem);
+        tvMoTaItem.setText(sanPhams.get(p).getMota_sp()+"");
     }
 
     @Override

@@ -72,7 +72,6 @@
                 android:layout_height="60dp"
                 android:layout_marginBottom="5dp"
                 android:hint="Link ảnh:"
-                android:inputType="number"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/textHint"
                 android:textSize="21sp" />
