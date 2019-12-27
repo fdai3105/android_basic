@@ -6,8 +6,7 @@
         android:bottomRightRadius="16dp"
         android:bottomLeftRadius="16dp">
     </corners>
-    <gradient
-        android:startColor="@color/focus"
-        android:endColor="@color/focus">
-    </gradient>
+    <solid
+        android:color="@color/bgWhiteFocus">
+    </solid>
 </shape>

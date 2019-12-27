@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgWhitee"
+    android:background="@color/bgWhite"
     android:orientation="vertical">
 
     <LinearLayout
@@ -48,7 +48,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/secound"
+        android:background="@color/bgWhitee"
         android:orientation="vertical"
         android:paddingStart="20dp"
         android:paddingEnd="20dp">
@@ -109,6 +109,8 @@
             android:layout_marginBottom="10dp"
             android:textColor="@color/textWhite"
             android:background="@drawable/bg_button_category"
-            android:text="Thanh toán" />
+            android:text="Thanh toán"
+            android:paddingRight="20dp"
+            android:drawableRight="@drawable/right_arrow"/>
     </LinearLayout>
 </LinearLayout>

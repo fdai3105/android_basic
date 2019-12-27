@@ -61,7 +61,11 @@ public class SanPhamAdapter extends BaseAdapter implements Filterable {
         } else {
             dataitem = (MyView) convertView.getTag();
         }
-        dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + "");
+        if (sanPhams.get(position).getSoluong_sp() == 0) {
+            dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + " ( Hết hàng )");
+        } else {
+            dataitem.tv_tenSP.setText(sanPhams.get(position).getTen_sp() + "");
+        }
         dataitem.rb_ratingSP.setRating(sanPhams.get(position).getLuongnguoidung_sp());
         dataitem.tv_danhmucSP.setText(sanPhams.get(position).getDanhMuc().getTenDanhMuc() + "");
         dataitem.tv_giatienSP.setText(currencyFormat(String.valueOf(sanPhams.get(position).getGia_sp())) + " VND");

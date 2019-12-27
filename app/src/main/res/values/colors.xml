@@ -4,15 +4,30 @@
     <color name="colorPrimaryDark">#2b2b28</color>
     <color name="colorAccent">#6F6F6F</color>
 
-    <color name="textWhite">#f8f8f8</color>
-    <color name="textGray">#2b2b28</color>
-    <color name="textGrayy">#6F6F6F</color>
-    <color name="textGrayyTrans70">#B3707070</color>
-    <color name="textP">#5E5E5E</color>
+    <!--    màu hệ thống các kiểu-->
+    <color name="statusBar_actionBar">#333745</color>
+    <!--    -->
+
+    <!--    màu background các kiểu-->
+    <color name="bgWhite">#FFFFFF</color>
+    <color name="bgWhitee">#ebebf0</color>
+    <color name="bgWhiteUnfocus">#F0EBE8</color>
+    <color name="bgWhiteFocus">#e1d6d0</color>
+    <color name="bgDark">#333745</color>
+    <color name="bgDarkk">#23242f</color>
+    <!--    -->
+
+    <!--    màu chữ các kiểu-->
+    <color name="textWhite">#FFFFFF</color>
+    <color name="textGray">#333745</color>
+    <color name="textGrayy">#45485b</color>
+    <color name="textGrayyTrans70">#B3333745</color>
+    <color name="textP">#676b88</color>
     <color name="textHint">#A3A3A3</color>
-    <color name="bgWhite">#FDFDFD</color>
-    <color name="bgWhitee">#19238EA8</color>
-    <color name="first">#248ea9</color>
-    <color name="focus">#196a76</color>
-    <color name="secound">#aee7e8</color>
+    <!---->
+
+    <!--    màu button X và button X focus-->
+    <color name="buttonX">#d63031</color>
+    <color name="buttonXfocus">#991e1f</color>
+    <!--    -->
 </resources>

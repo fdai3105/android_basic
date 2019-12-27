@@ -61,7 +61,7 @@
                 android:id="@+id/spDialogEditDMSP"
                 style="@android:style/Widget.Material.Spinner.Underlined"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="65dp"
                 android:layout_marginBottom="-5dp"
                 android:spinnerMode="dropdown"
                 android:textSize="21sp" />
@@ -107,9 +107,10 @@
             <EditText
                 android:id="@+id/etDialogEditMoTaSP"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="160dp"
                 android:layout_marginBottom="5dp"
                 android:hint="Mô tả: "
+                android:gravity="top"
                 android:textColor="@color/textGray"
                 android:textColorHint="@color/textHint"
                 android:textSize="21sp" />
@@ -120,7 +121,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|bottom"
                 android:layout_marginTop="15dp"
-                android:background="@drawable/bg_button_category"
+                android:background="@drawable/bg_button_dark"
+                android:textColor="@color/textWhite"
                 android:text="Sửa" />
         </LinearLayout>
     </LinearLayout>

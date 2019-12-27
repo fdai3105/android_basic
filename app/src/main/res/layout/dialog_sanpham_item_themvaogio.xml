@@ -71,7 +71,8 @@
                         android:id="@+id/btn_giamSoLuong"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/bg_button_category"
+                        android:textColor="@color/textWhite"
+                        android:background="@drawable/bg_button_dark"
                         android:text="-" />
 
                     <TextView
@@ -90,7 +91,8 @@
                         android:id="@+id/btn_tangSoLuong"
                         android:layout_width="32dp"
                         android:layout_height="32dp"
-                        android:background="@drawable/bg_button_category"
+                        android:textColor="@color/textWhite"
+                        android:background="@drawable/bg_button_dark"
                         android:text="+" />
                 </LinearLayout>
             </LinearLayout>
@@ -112,7 +114,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:background="@drawable/bg_button_category"
+                android:textColor="@color/textWhite"
+                android:background="@drawable/bg_button_dark"
                 android:text="Thêm vào giỏ" />
         </LinearLayout>
     </LinearLayout>

@@ -3,15 +3,15 @@
 
     <!--  Non focused states
      -->
-    <item android:drawable="@drawable/style_category_button_unfocus" android:state_focused="false" android:state_pressed="false" android:state_selected="false" />
-    <item android:drawable="@drawable/style_category_button_unfocus" android:state_focused="false" android:state_pressed="false" android:state_selected="true" />
+    <item android:drawable="@drawable/style_button_category_unfocus" android:state_focused="false" android:state_pressed="false" android:state_selected="false" />
+    <item android:drawable="@drawable/style_button_category_unfocus" android:state_focused="false" android:state_pressed="false" android:state_selected="true" />
 
     <!--  Focused states
      -->
-    <item android:drawable="@drawable/style_category_button_focus" android:state_focused="true" android:state_pressed="false" android:state_selected="false" />
-    <item android:drawable="@drawable/style_category_button_focus" android:state_focused="true" android:state_pressed="false" android:state_selected="true" />
+    <item android:drawable="@drawable/style_button_category_focus" android:state_focused="true" android:state_pressed="false" android:state_selected="false" />
+    <item android:drawable="@drawable/style_button_category_focus" android:state_focused="true" android:state_pressed="false" android:state_selected="true" />
 
     <!--  Pressed
      -->
-    <item android:drawable="@drawable/style_category_button_focus" android:state_pressed="true" />
+    <item android:drawable="@drawable/style_button_category_focus" android:state_pressed="true" />
 </selector>

@@ -8,7 +8,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <!--        -->
-        <item name="android:statusBarColor">@color/first</item>
+        <item name="android:statusBarColor">@color/statusBar_actionBar</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
         <item name="actionBarStyle">@style/CustomActionBar</item>
         <item name="android:windowBackground">@color/bgWhite</item>
@@ -19,7 +19,7 @@
 
     <!--    Category MainActivity theme-->
     <style name="Category" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:windowBackground">@drawable/img_bg</item>
+        <item name="android:windowBackground">@drawable/bg</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowAnimationStyle">@style/CustomActivityAnimation</item>
@@ -35,8 +35,8 @@
     </style>
 
     <style name="CustomActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
-        <item name="android:background">@color/first</item>
-        <item name="background">@color/first</item>
+        <item name="android:background">@color/statusBar_actionBar</item>
+        <item name="background">@color/statusBar_actionBar</item>
     </style>
 
     <style name="DiaLog">
