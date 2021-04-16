@@ -64,6 +64,7 @@ public class SanPhamItemActivity extends AppCompatActivity {
 //        ***************************************************
         positionItem = getIntent().getIntExtra("positionItem", 0);
 //
+        System.out.println(SanPhamActivity.sanPhams);
         if (SanPhamActivity.sanPhams.get(positionItem).getSoluong_sp()==0) {
             tv_themhangvaogio.setText("Hết hàng!");
             btnThemVaoGio.setBackgroundColor(Color.RED);

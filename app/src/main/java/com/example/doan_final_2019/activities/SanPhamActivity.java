@@ -61,17 +61,11 @@ public class SanPhamActivity extends AppCompatActivity {
         etSearch = findViewById(R.id.etSearch);
 //      *******************************************************************
         dataSP = new Data(getApplicationContext());
-        ArrayList<SanPham> sanPhams = new ArrayList<>();
-        dataSP.DataSanPham(sanPhams);
-        for (int i = 0; i < sanPhams.size() ; i++) {
-            dataSP.addProduct(sanPhams.get(i));
-        }
-
         if (sanPhams.isEmpty()) {
-            //dataSP.DataSanPham(sanPhams);
+            dataSP.DataSanPham(sanPhams);
         }
         setHint(sanPhams);
-        //etSearch.setHint("Tìm kiếm: "+sanPhams.size() + " sản phẩm có sẵn");
+        etSearch.setHint("Tìm kiếm: " + sanPhams.size() + " sản phẩm có sẵn");
 
         gridViewSP.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
