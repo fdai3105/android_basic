@@ -136,13 +136,13 @@ public class NhanVienItemActivity extends AppCompatActivity {
         builder.setTitle("Xoá nhân viên");
         builder.setMessage("Bạn có muốn xoá " + NhanVienActivity.nhanViens.get(postion).getTen_nv() + " không?");
         builder.setCancelable(true);
-        builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("Xoá", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Xoá", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 NhanVienActivity.nhanViens.remove(postion);

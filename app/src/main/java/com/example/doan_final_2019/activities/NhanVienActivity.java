@@ -26,7 +26,7 @@ import java.util.Objects;
 
 public class NhanVienActivity extends AppCompatActivity {
     GridView gridViewNV;
-    Data data = new Data();
+    //Data data = new Data();
     public static ArrayList<NhanVien> nhanViens = new ArrayList<>();
     private static NhanVienAdapter nhanVienAdapter;
 
@@ -38,7 +38,7 @@ public class NhanVienActivity extends AppCompatActivity {
         gridViewNV = findViewById(R.id.gridViewNV);
 
         if (nhanViens.isEmpty()) {
-            data.DataNhanVien(nhanViens);
+            //data.DataNhanVien(nhanViens);
         }
 
         nhanVienAdapter = new NhanVienAdapter(nhanViens, getApplicationContext());

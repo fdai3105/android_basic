@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.doan_final_2019.CurrencyFormat;
 import com.example.doan_final_2019.R;
@@ -73,5 +74,9 @@ public class GioHangActivity extends AppCompatActivity {
 
         tv_tongSL.setText(tongSL + "");
         tv_tongTien.setText(new CurrencyFormat().CurrencyFormat(String.valueOf(tongTien)) + " VND");
+    }
+
+    public void btnThanhToanClick(View view) {
+        Toast.makeText(this, "Thanh toán thành công! <3", Toast.LENGTH_SHORT).show();
     }
 }

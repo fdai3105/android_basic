@@ -144,13 +144,13 @@ public class SanPhamItemActivity extends AppCompatActivity {
         builder.setTitle("Xoá sản phẩm");
         builder.setMessage("Bạn có muốn xoá " + SanPhamActivity.sanPhams.get(positionItem).getTen_sp() + " không?");
         builder.setCancelable(true);
-        builder.setPositiveButton("Không", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
             }
         });
-        builder.setNegativeButton("Xoá", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Xoá", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 SanPhamActivity.sanPhams.remove(positionItem);

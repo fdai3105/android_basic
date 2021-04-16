@@ -1,6 +1,12 @@
 package com.example.doan_final_2019;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 import com.example.doan_final_2019.models.DanhMuc;
 import com.example.doan_final_2019.models.NhanVien;
@@ -9,7 +15,54 @@ import com.example.doan_final_2019.models.SanPham;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Data {
+public class Data extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "doan2020";
+    private static final int DATABASE_VERSION = 1;
+    private static final String TABLE_NAME = "sanpham";
+
+    private static final String KEY_SANPHAM_ID = "sanpham_id";
+    private static final String KEY_SANPHAM_TEN = "sanpham_ten";
+    private static final String KEY_SANPHAM_DANHMUC = "sanpham_danhmuc";
+    private static final String KEY_SANPHAM_SOLUONG = "sanpham_soluong";
+    private static final String KEY_SANPHAM_GIA = "sanpham_gia";
+    private static final String KEY_SANPHAM_MOTA = "sanpham_mota";
+    private static final String KEY_SANPHAM_LUONGNGUOIDUNG = "sanpham_luongnguoidung";
+    private static final String KEY_SANPHAM_NGAYTHEM = "sanpham_ngaythem";
+
+    public Data(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String create_dataImage_table = String.format("CREATE TABLE %s ( %s INTEGER PRIMARY KEY, %s TEXT , %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT )",
+                TABLE_NAME, KEY_SANPHAM_ID, KEY_SANPHAM_TEN, KEY_SANPHAM_DANHMUC, KEY_SANPHAM_SOLUONG,
+                KEY_SANPHAM_GIA, KEY_SANPHAM_MOTA, KEY_SANPHAM_LUONGNGUOIDUNG, KEY_SANPHAM_NGAYTHEM);
+        db.execSQL(create_dataImage_table);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        String drop_students_table = String.format("DROP TABLE IF EXISTS %s", TABLE_NAME);
+        db.execSQL(drop_students_table);
+
+        onCreate(db);
+    }
+
+    public void addProduct(SanPham sanPham) {
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_SANPHAM_TEN,sanPham.getTen_sp());
+        contentValues.put(KEY_SANPHAM_DANHMUC,sanPham.getDanhMuc().getTenDanhMuc());
+        contentValues.put(KEY_SANPHAM_SOLUONG,sanPham.getSoluong_sp());
+        contentValues.put(KEY_SANPHAM_GIA,sanPham.getGia_sp());
+        contentValues.put(KEY_SANPHAM_MOTA,sanPham.getMota_sp());
+        contentValues.put(KEY_SANPHAM_LUONGNGUOIDUNG,sanPham.getLuongnguoidung_sp());
+        contentValues.put(KEY_SANPHAM_NGAYTHEM,sanPham.getNgaythem_sp().toString());
+
+        sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
+        sqLiteDatabase.close();
+    }
 
     public void DataSanPham(ArrayList<SanPham> sp) {
 //     month start 0>11
